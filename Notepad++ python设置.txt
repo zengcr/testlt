@@ -1,0 +1,34 @@
+
+
+cmd /k python "$(FULL_CURRENT_PATH)" & ECHO. & PAUSE & EXIT
+
+
+'''
+cmd /k python： 表示打开Cmd窗口，运行/k后边的命令，并且执行完毕后保留窗口。此处即python（因为在环境变量里已经添加了Python目录，所以这里不用指定Python程序的目录，就可直接找到）
+
+$(FULL_CURRENT_PATH) ：Notepad++的宏定义，表示当前文件的完整路径。
+
+& 用来连接多条命令
+
+ECHO：换行
+
+PAUSE： 表示运行结束后暂停（cmd中显示“请按任意键继续. . .”），等待一个按键继续
+
+EXIT： 表示“按任意键继续. . .”后，关闭命令行窗口。
+'''
+
+cmd /k cd "(CURRENT_DIRECTORY)" &  python "(FULL_CURRENT_PATH)" & ECHO. & PAUSE & EXIT  # 此条命令参数少”$“会提示路径错误
+
+# 评论
+cmd /k cd /d "$(CURRENT_DIRECTORY)" & python "$(FULL_CURRENT_PATH)" & ECHO & PAUSE & EXIT  # ECHO 后面少了一个”.“,会让命令行窗口提示”ECHO处于打开状态“，增加"."后就表示换行
+cmd /k cd /d "$(CURRENT_DIRECTORY)" & python "$(FULL_CURRENT_PATH)" & ECHO. & PAUSE & EXIT   #本条命令为正确命令
+
+
+如果npp所在盘符(比如C盘)与py文件所在盘符(比如D盘)不一致，这个命令失效，还会滞留在NPP安装目录。再改一改：
+cmd /k x: & cd "$(CURRENT_DIRECTORY)" & python "$(FULL_CURRENT_PATH)" & ECHO. & PAUSE & EXIT
+
+<Command name="Run Python" Ctrl="yes" Alt="no" Shift="no" Key="116">cmd /k cd /d &quot;$(CURRENT_DIRECTORY)&quot; &amp; python &quot;$(FULL_CURRENT_PATH)&quot; &amp; ECHO. &amp; PAUSE &amp; EXIT</Command>
+
+
+
+

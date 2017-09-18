@@ -1,0 +1,22 @@
+Python程序开发的几种方式：
+
+Windows系统
+1、以命令行方式 
+a、在cmd窗口中输入python
+b、在IDLE中提示符
+
+2、以脚本方式
+a、在文本编辑器中编辑脚本script.py，然后在cmd命令行中，以python script.py运行（要将python.exe所在目录加入环境变量PATH）
+b、在IDLE中，File-New File，然后F5运行
+
+3、在IDE中开发
+例如：Pycharm;Eclipse+PyDev等
+
+
+Linux/Unix系统字符界面
+1、以命令行方式
+a、在shell中输入python
+
+2、以脚本方式
+a、在文本编辑器中编辑脚本script.py，然后在shell中以python script.py运行 （要将python执行文件加入环境变量PATH）
+b、在脚本开头加入#!/usr/bin/python2(python3) 在实际运行脚本前给脚本执行权限 chmod +x script.py 然后运行./script.py

@@ -1,0 +1,107 @@
+#DOM 节点
+在 DOM 中，XML 文档中的每个成分都是一个节点。
+DOM 节点
+根据 DOM，XML 文档中的每个成分都是一个节点。
+DOM 是这样规定的：
+整个文档是一个文档节点
+每个 XML 元素是一个元素节点
+包含在 XML 元素中的文本是文本节点
+每一个 XML 属性是一个属性节点
+注释是注释节点
+
+#DOM 方法
+XML DOM 属性
+一些典型的 DOM 属性：
+x.nodeName - x 的名称
+x.nodeValue - x 的值
+x.parentNode - x 的父节点
+x.childNodes - x 的子节点
+x.attributes - x 的属性节点
+
+XML DOM 方法
+x.getElementsByTagName(name) - 获取带有指定标签名称的所有元素
+x.appendChild(node) - 向 x 插入子节点
+x.removeChild(node) - 从 x 删除子节点
+
+#DOM 访问
+访问节点
+您可以通过三种方式来访问节点：
+1. 通过使用 getElementsByTagName() 方法。
+2. 通过循环（遍历）节点树。
+3. 通过利用节点的关系在节点树中导航。
+
+节点类型（Node Types）
+XML 文档的 documentElement 属性是根节点。
+节点的 nodeName 属性是节点的名称。
+节点的 nodeType 属性是节点的类型。
+
+#DOM节点信息
+节点的属性
+在 XML DOM 中，每个节点都是一个对象。
+对象拥有方法和属性，并可通过 JavaScript 进行访问和操作。
+三个重要的节点属性是：
+nodeName
+nodeValue
+nodeType
+
+nodeName 属性
+nodeName 属性规定节点的名称。
+nodeName 是只读的
+元素节点的 nodeName 与标签名相同
+属性节点的 nodeName 是属性的名称
+文本节点的 nodeName 永远是 #text
+文档节点的 nodeName 永远是 #document
+
+nodeValue 属性
+nodeValue 属性规定节点的值。
+元素节点的 nodeValue 是 undefined
+文本节点的 nodeValue 是文本本身
+属性节点的 nodeValue 是属性的值
+
+#DOM节点列表
+DOM 节点列表（Node List）
+当使用诸如 childNodes 或 getElementsByTagName() 的属性或方法是，会返回节点列表对象。
+节点列表对象表示节点的列表，与 XML 中的顺序相同。
+节点列表中的节点使用从 0 开始的索引号进行访问。
+
+DOM 属性列表（命名节点图 Named Node Map）
+元素节点的 attributes 属性返回属性节点的列表。
+这被称为命名节点图（Named Node Map），除了方法和属性上的一些差别以外，它与节点列表相似。
+属性列表会保持自身的更新。如果删除或添加属性，这个列表会自动更新。
+再使用getNamedItem()返回属性节点，用nodeValue获得属性值
+
+#DOM导航
+导航 DOM 节点
+通过节点间的关系访问节点树中的节点，通常称为导航节点（"navigating nodes"）。
+在 XML DOM 中，节点的关系被定义为节点的属性：
+parentNode
+childNodes
+firstChild
+lastChild
+nextSibling
+previousSibling
+
+#DOM获取节点
+nodeValue 属性用于获取节点的文本值。
+getAttribute() 方法返回属性的值。
+
+获取元素的值
+在 DOM 中，每种成分都是节点。元素节点没有文本值。
+元素节点的文本存储在子节点中。该节点称为文本节点。
+获取元素文本的方法，就是获取这个子节点（文本节点）的值。
+
+获取元素值
+getElementsByTagName() 方法返回包含拥有指定标签名的所有元素的节点列表，其中的元素的顺序是它们在源文档中出现的顺序。
+childNodes 属性返回子节点的列表
+nodeValue 属性返回文本节点的文本值
+
+获取属性的值
+在 DOM 中，属性也是节点。与元素节点不同，属性节点拥有文本值。
+获取属性的值的方法，就是获取它的文本值。
+可以通过使用 getAttribute() 方法或属性节点的 nodeValue 属性来完成这个任务。
+
+获取属性值 - getAttribute()
+getAttribute() 方法返回属性值。
+
+获取属性值 - getAttributeNode()
+getAttributeNode() 方法返回属性节点。
