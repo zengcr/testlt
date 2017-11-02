@@ -3,7 +3,7 @@ windows下安装python第三方包、模块汇总如下(部分方式同样适用
 
 1. windows下最常见的*.exe,*msi文件，直接运行安装即可；
 
-2. 安装easy_install,可以去官网下载：http://peak.telecommunity.com/dist/ez_setup.py，使用python 执行ez_setup.py文件，如：`python ez_setup.py`,此后会下载安装相应版本的easy_install.exe至python安装目录下的Scripts目录下.
+2. 安装easy_install,可以去官网下载：http://peak.telecommunity.com/dist/ez_setup.py，使用python 执行`ez_setup.py`文件，如：`python ez_setup.py`,此后会下载安装相应版本的easy_install.exe至python安装目录下的Scripts目录下.
 
 3. easy_install.exe可安装*.egg格式的包,如：`easy_install *.egg`
 

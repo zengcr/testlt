@@ -31,3 +31,13 @@
     ray', 'atexit', 'audioop', 'binascii', 'builtins', 'cmath', 'errno', 'faulthandl
     er', 'gc', 'itertools', 'marshal', 'math', 'mmap', 'msvcrt', 'nt', 'parser', 'sy
     s', 'time', 'winreg', 'xxsubtype', 'zipimport', 'zlib')
+
+7. `__module__`
+
+        首先python语言的基本组织单位是模块，不像Java是一类一文件，python的类、函数都在模
+        块里面，当通过import引入一个函数以后，有时候由于函数签名的同名现象，需要看函数是
+        从那个模块导入进来的，就需要看一下定义函数的的模块名称，这个时候，就使用一下语句来得这个模块名称：
+
+        function_name.__module__
+        不过需要提醒的是这个module名称不一定和import语句前面的from名称完全一致，os模块的
+        open函数的__module__在windows下面是"nt",而django模块的get_version函数的__module__就是"django"

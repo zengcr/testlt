@@ -1,31 +1,3 @@
-['ArithmeticError', 'AssertionError', 'AttributeError', 'BaseException', 'Blocki
-ngIOError', 'BrokenPipeError', 'BufferError', 'BytesWarning', 'ChildProcessError
-', 'ConnectionAbortedError', 'ConnectionError', 'ConnectionRefusedError', 'Conne
-ctionResetError', 'DeprecationWarning', 'EOFError', 'Ellipsis', 'EnvironmentErro
-r', 'Exception', 'False', 'FileExistsError', 'FileNotFoundError', 'FloatingPoint
-Error', 'FutureWarning', 'GeneratorExit', 'IOError', 'ImportError', 'ImportWarni
-ng', 'IndentationError', 'IndexError', 'InterruptedError', 'IsADirectoryError',
-'KeyError', 'KeyboardInterrupt', 'LookupError', 'MemoryError', 'ModuleNotFoundEr
-ror', 'NameError', 'None', 'NotADirectoryError', 'NotImplemented', 'NotImplement
-edError', 'OSError', 'OverflowError', 'PendingDeprecationWarning', 'PermissionEr
-ror', 'ProcessLookupError', 'RecursionError', 'ReferenceError', 'ResourceWarning
-', 'RuntimeError', 'RuntimeWarning', 'StopAsyncIteration', 'StopIteration', 'Syn
-taxError', 'SyntaxWarning', 'SystemError', 'SystemExit', 'TabError', 'TimeoutErr
-or', 'True', 'TypeError', 'UnboundLocalError', 'UnicodeDecodeError', 'UnicodeEnc
-odeError', 'UnicodeError', 'UnicodeTranslateError', 'UnicodeWarning', 'UserWarni
-ng', 'ValueError', 'Warning', 'WindowsError', 'ZeroDivisionError', '_', '__build
-_class__', '__debug__', '__doc__', '__import__', '__loader__', '__name__', '__pa
-ckage__', '__spec__', 'abs', 'all', 'any', 'ascii', 'bin', 'bool', 'bytearray',
-'bytes', 'callable', 'chr', 'classmethod', 'compile', 'complex', 'copyright', 'c
-redits', 'delattr', 'dict', 'dir', 'divmod', 'enumerate', 'eval', 'exec', 'exit'
-, 'filter', 'float', 'format', 'frozenset', 'getattr', 'globals', 'hasattr', 'ha
-sh', 'help', 'hex', 'id', 'input', 'int', 'isinstance', 'issubclass', 'iter', 'l
-en', 'license', 'list', 'locals', 'map', 'max', 'memoryview', 'min', 'next', 'ob
-ject', 'oct', 'open', 'ord', 'pow', 'print', 'property', 'quit', 'range', 'repr'
-, 'reversed', 'round', 'set', 'setattr', 'slice', 'sorted', 'staticmethod', 'str
-', 'sum', 'super', 'tuple', 'type', 'vars', 'zip']
-
-
  'Ellipsis': Ellipsis,                                          # 常量
  'False': False,                                                # 常量
  'None': None,                                                  # 常量
@@ -33,6 +5,8 @@ ject', 'oct', 'open', 'ord', 'pow', 'print', 'property', 'quit', 'range', 'repr'
  'True': True,                                                  # 常量
  '__debug__': True,                                             # 常量
 
+ 'exit': Use exit() or Ctrl-Z plus Return to exit,
+ 'quit': Use quit() or Ctrl-Z plus Return to exit,
  
  'copyright': Copyright (c) 2001-2017 Python Software Foundation.
             All Rights Reserved.
@@ -53,83 +27,7 @@ ject', 'oct', 'open', 'ord', 'pow', 'print', 'property', 'quit', 'range', 'repr'
  
  说明：help定义于模块builtins中，是class _sitebuiltins._Helper的实例。剩下的3个则是_sitebuiltins._Printer的实例，用来打印一些信息。
  
- 
- 'exit': Use exit() or Ctrl-Z plus Return to exit,
- 'quit': Use quit() or Ctrl-Z plus Return to exit,
- 
 
- 'BaseException': <class 'BaseException'>,
- 'Exception': <class 'Exception'>,
- 'GeneratorExit': <class 'GeneratorExit'>,
- 'KeyboardInterrupt': <class 'KeyboardInterrupt'>,
- 'StopAsyncIteration': <class 'StopAsyncIteration'>,
- 'StopIteration': <class 'StopIteration'>,
- 'SystemExit': <class 'SystemExit'>,
- 
- 
- 'BytesWarning': <class 'BytesWarning'>,
- 'DeprecationWarning': <class 'DeprecationWarning'>,
- 'FutureWarning': <class 'FutureWarning'>,
- 'ImportWarning': <class 'ImportWarning'>,
- 'PendingDeprecationWarning': <class 'PendingDeprecationWarning'>,
- 'ResourceWarning': <class 'ResourceWarning'>,
- 'RuntimeWarning': <class 'RuntimeWarning'>,
- 'SyntaxWarning': <class 'SyntaxWarning'>,
- 'UnicodeWarning': <class 'UnicodeWarning'>,
- 'UserWarning': <class 'UserWarning'>,
- 'Warning': <class 'Warning'>,
- 
- 
-{'ArithmeticError': <class 'ArithmeticError'>,
- 'AssertionError': <class 'AssertionError'>,
- 'AttributeError': <class 'AttributeError'>,
- 'BlockingIOError': <class 'BlockingIOError'>,
- 'BrokenPipeError': <class 'BrokenPipeError'>,
- 'BufferError': <class 'BufferError'>,
- 'ChildProcessError': <class 'ChildProcessError'>,
- 'ConnectionAbortedError': <class 'ConnectionAbortedError'>,
- 'ConnectionError': <class 'ConnectionError'>,
- 'ConnectionRefusedError': <class 'ConnectionRefusedError'>,
- 'ConnectionResetError': <class 'ConnectionResetError'>,
- 'EOFError': <class 'EOFError'>,
- 'EnvironmentError': <class 'OSError'>,
- 'FileExistsError': <class 'FileExistsError'>,
- 'FileNotFoundError': <class 'FileNotFoundError'>,
- 'FloatingPointError': <class 'FloatingPointError'>,
- 'IOError': <class 'OSError'>,
- 'ImportError': <class 'ImportError'>,
- 'IndentationError': <class 'IndentationError'>,
- 'IndexError': <class 'IndexError'>,
- 'InterruptedError': <class 'InterruptedError'>,
- 'IsADirectoryError': <class 'IsADirectoryError'>,
- 'KeyError': <class 'KeyError'>,
- 'LookupError': <class 'LookupError'>,
- 'MemoryError': <class 'MemoryError'>,
- 'ModuleNotFoundError': <class 'ModuleNotFoundError'>,
- 'NameError': <class 'NameError'>,
- 'NotADirectoryError': <class 'NotADirectoryError'>,
- 'NotImplementedError': <class 'NotImplementedError'>,
- 'OSError': <class 'OSError'>,
- 'OverflowError': <class 'OverflowError'>,
- 'PermissionError': <class 'PermissionError'>,
- 'ProcessLookupError': <class 'ProcessLookupError'>,
- 'RecursionError': <class 'RecursionError'>,
- 'ReferenceError': <class 'ReferenceError'>,
- 'RuntimeError': <class 'RuntimeError'>,
- 'SyntaxError': <class 'SyntaxError'>,
- 'SystemError': <class 'SystemError'>,
- 'TabError': <class 'TabError'>,
- 'TimeoutError': <class 'TimeoutError'>,
- 'TypeError': <class 'TypeError'>,
- 'UnboundLocalError': <class 'UnboundLocalError'>,
- 'UnicodeDecodeError': <class 'UnicodeDecodeError'>,
- 'UnicodeEncodeError': <class 'UnicodeEncodeError'>,
- 'UnicodeError': <class 'UnicodeError'>,
- 'UnicodeTranslateError': <class 'UnicodeTranslateError'>,
- 'ValueError': <class 'ValueError'>,
- 'WindowsError': <class 'OSError'>,
- 'ZeroDivisionError': <class 'ZeroDivisionError'>,
- 
  '_': 31880320,
  '__build_class__': <built-in function __build_class__>,
  '__doc__': 'Built-in functions, exceptions, and other objects.\n'
@@ -214,7 +112,7 @@ nImporter'>),
  'reversed': <class 'reversed'>,
  'slice': <class 'slice'>,
  'zip': <class 'zip'>
- }
+ 
  
  BaseException
  +-- SystemExit
@@ -280,3 +178,74 @@ nImporter'>),
            +-- UnicodeWarning
            +-- BytesWarning
            +-- ResourceWarning
+
+ 'BaseException': <class 'BaseException'>,
+ 'Exception': <class 'Exception'>,
+ 'GeneratorExit': <class 'GeneratorExit'>,
+ 'KeyboardInterrupt': <class 'KeyboardInterrupt'>,
+ 'StopAsyncIteration': <class 'StopAsyncIteration'>,
+ 'StopIteration': <class 'StopIteration'>,
+ 'SystemExit': <class 'SystemExit'>,		   
+		   
+ 'BytesWarning': <class 'BytesWarning'>,
+ 'DeprecationWarning': <class 'DeprecationWarning'>,
+ 'FutureWarning': <class 'FutureWarning'>,
+ 'ImportWarning': <class 'ImportWarning'>,
+ 'PendingDeprecationWarning': <class 'PendingDeprecationWarning'>,
+ 'ResourceWarning': <class 'ResourceWarning'>,
+ 'RuntimeWarning': <class 'RuntimeWarning'>,
+ 'SyntaxWarning': <class 'SyntaxWarning'>,
+ 'UnicodeWarning': <class 'UnicodeWarning'>,
+ 'UserWarning': <class 'UserWarning'>,
+ 'Warning': <class 'Warning'>,
+ 
+ 'ArithmeticError': <class 'ArithmeticError'>,
+ 'AssertionError': <class 'AssertionError'>,
+ 'AttributeError': <class 'AttributeError'>,
+ 'BlockingIOError': <class 'BlockingIOError'>,
+ 'BrokenPipeError': <class 'BrokenPipeError'>,
+ 'BufferError': <class 'BufferError'>,
+ 'ChildProcessError': <class 'ChildProcessError'>,
+ 'ConnectionAbortedError': <class 'ConnectionAbortedError'>,
+ 'ConnectionError': <class 'ConnectionError'>,
+ 'ConnectionRefusedError': <class 'ConnectionRefusedError'>,
+ 'ConnectionResetError': <class 'ConnectionResetError'>,
+ 'EOFError': <class 'EOFError'>,
+ 'EnvironmentError': <class 'OSError'>,
+ 'FileExistsError': <class 'FileExistsError'>,
+ 'FileNotFoundError': <class 'FileNotFoundError'>,
+ 'FloatingPointError': <class 'FloatingPointError'>,
+ 'IOError': <class 'OSError'>,
+ 'ImportError': <class 'ImportError'>,
+ 'IndentationError': <class 'IndentationError'>,
+ 'IndexError': <class 'IndexError'>,
+ 'InterruptedError': <class 'InterruptedError'>,
+ 'IsADirectoryError': <class 'IsADirectoryError'>,
+ 'KeyError': <class 'KeyError'>,
+ 'LookupError': <class 'LookupError'>,
+ 'MemoryError': <class 'MemoryError'>,
+ 'ModuleNotFoundError': <class 'ModuleNotFoundError'>,
+ 'NameError': <class 'NameError'>,
+ 'NotADirectoryError': <class 'NotADirectoryError'>,
+ 'NotImplementedError': <class 'NotImplementedError'>,
+ 'OSError': <class 'OSError'>,
+ 'OverflowError': <class 'OverflowError'>,
+ 'PermissionError': <class 'PermissionError'>,
+ 'ProcessLookupError': <class 'ProcessLookupError'>,
+ 'RecursionError': <class 'RecursionError'>,
+ 'ReferenceError': <class 'ReferenceError'>,
+ 'RuntimeError': <class 'RuntimeError'>,
+ 'SyntaxError': <class 'SyntaxError'>,
+ 'SystemError': <class 'SystemError'>,
+ 'TabError': <class 'TabError'>,
+ 'TimeoutError': <class 'TimeoutError'>,
+ 'TypeError': <class 'TypeError'>,
+ 'UnboundLocalError': <class 'UnboundLocalError'>,
+ 'UnicodeDecodeError': <class 'UnicodeDecodeError'>,
+ 'UnicodeEncodeError': <class 'UnicodeEncodeError'>,
+ 'UnicodeError': <class 'UnicodeError'>,
+ 'UnicodeTranslateError': <class 'UnicodeTranslateError'>,
+ 'ValueError': <class 'ValueError'>,
+ 'WindowsError': <class 'OSError'>,
+ 'ZeroDivisionError': <class 'ZeroDivisionError'>,
+ 
