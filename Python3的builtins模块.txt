@@ -1,4 +1,4 @@
-'Ellipsis': Ellipsis,                                          # 常量
+'Ellipsis': 	Ellipsis,                                          # 常量
 'False': False,                                                # 常量
 'None': None,                                                  # 常量
 'NotImplemented': NotImplemented,                              # 常量
@@ -6,17 +6,16 @@
 '__debug__': True,                                             # 常量
 
 '_': 31880320,
-'__build_class__': <built-in function __build_class__>,
-'__doc__': 'Built-in functions, exceptions, and other objects.\n'
-    '\n'
-    "Noteworthy: None is the `nil' object; Ellipsis represents `...' "
-    'in slices.',
-'__import__': <built-in function __import__>,
-'__loader__': <class '_frozen_importlib.BuiltinImporter'>,
-'__name__': 'builtins',
-'__package__': '',
-'__spec__': ModuleSpec(name='builtins', loader=<class '_frozen_importlib.Builti
-nImporter'>),
+'__build_class__': 	<built-in function __build_class__>,
+'__doc__': 			'Built-in functions, exceptions, and other objects.\n'
+						'\n'
+						"Noteworthy: None is the `nil' object; Ellipsis represents `...' "
+						'in slices.',
+'__import__': 		<built-in function __import__>,
+'__loader__': 		<class '_frozen_importlib.BuiltinImporter'>,
+'__name__': 		'builtins',
+'__package__': 		'',
+'__spec__': 		ModuleSpec(name='builtins', loader=<class '_frozen_importlib.BuiltinImporter'>),
 
 'abs': <built-in function abs>,
 'all': <built-in function all>,
@@ -69,15 +68,15 @@ nImporter'>),
 'int': <class 'int'>,
 'list': <class 'list'>,
 'set': <class 'set'>,
-'str': <class 'str'>,
+'str': 				<class 'str'>,
 'tuple': <class 'tuple'>,
-'type': <class 'type'>,
+'type': 			<class 'type'>,
 'memoryview': <class 'memoryview'>,
-'object': <class 'object'>,
+'object': 			<class 'object'>,
 
-'classmethod': <class 'classmethod'>,
-'staticmethod': <class 'staticmethod'>,
-'property': <class 'property'>,
+'classmethod': 		<class 'classmethod'>,
+'staticmethod': 	<class 'staticmethod'>,
+'property': 		<class 'property'>,
 'super': <class 'super'>,
 
 'enumerate': <class 'enumerate'>,

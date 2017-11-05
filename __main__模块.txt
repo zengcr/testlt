@@ -2,11 +2,11 @@
 age__', '__spec__']
 
 
-{'__annotations__': {},
- '__builtins__': <module 'builtins' (built-in)>,
- '__doc__': None,
- '__loader__': <class '_frozen_importlib.BuiltinImporter'>,
- '__main__': <module '__main__' (built-in)>,
- '__name__': '__main__',
- '__package__': None,
- '__spec__': None,
+'__annotations__': {},
+'__builtins__': <module 'builtins' (built-in)>,
+'__doc__': None,
+'__loader__': <class '_frozen_importlib.BuiltinImporter'>,
+'__main__': <module '__main__' (built-in)>,
+'__name__': '__main__',
+'__package__': None,
+'__spec__': None,
