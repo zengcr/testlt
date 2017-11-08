@@ -88,6 +88,57 @@
 'slice': <class 'slice'>,
 'zip': <class 'zip'>
 
+对内建函数分类
+'abs': <built-in function abs>,
+'divmod': <built-in function divmod>,
+'max': <built-in function max>,
+'min': <built-in function min>,
+'pow': <built-in function pow>,
+'round': <built-in function round>,
+'sum': <built-in function sum>,
+
+'ascii': <built-in function ascii>,
+'bin': <built-in function bin>,
+'oct': <built-in function oct>,
+'hex': <built-in function hex>,
+'chr': <built-in function chr>,
+'ord': <built-in function ord>,
+
+'all': <built-in function all>,
+'any': <built-in function any>,
+'compile': <built-in function compile>,
+
+'dir': <built-in function dir>,
+'id': <built-in function id>,
+
+'callable': <built-in function callable>,
+'input': <built-in function input>,
+'open': <built-in function open>,
+'print': <built-in function print>,
+'sorted': <built-in function sorted>,
+
+'eval': <built-in function eval>,
+'exec': <built-in function exec>,
+
+'hasattr': <built-in function hasattr>,
+'getattr': <built-in function getattr>,
+'setattr': <built-in function setattr>,
+'delattr': <built-in function delattr>,
+
+'hash': <built-in function hash>,
+'iter': <built-in function iter>,
+'len': <built-in function len>,
+'next': <built-in function next>,
+'repr': <built-in function repr>,
+'format': <built-in function format>,
+
+'globals': <built-in function globals>,
+'locals': <built-in function locals>,
+'vars': <built-in function vars>,
+
+'isinstance': <built-in function isinstance>,
+'issubclass': <built-in function issubclass>,
+——————————————————————————————————————————————————————————
 'exit': Use exit() or Ctrl-Z plus Return to exit,
 'quit': Use quit() or Ctrl-Z plus Return to exit,
 
@@ -248,3 +299,4 @@ BaseException
     'SyntaxWarning': <class 'SyntaxWarning'>,
     'UnicodeWarning': <class 'UnicodeWarning'>,
     'UserWarning': <class 'UserWarning'>,
+
