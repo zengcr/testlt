@@ -1,4 +1,4 @@
-'Ellipsis': 	Ellipsis,                                          # 常量
+'Ellipsis': 	Ellipsis,                                      # 常量
 'False': False,                                                # 常量
 'None': None,                                                  # 常量
 'NotImplemented': NotImplemented,                              # 常量
