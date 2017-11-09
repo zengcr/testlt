@@ -94,3 +94,49 @@ dir(object)魔法方法分类
 '__reduce__',
 '__reduce_ex__',
 
+
+建如下的类
+class Foo:
+    def bar(self, name):
+        print(name)
+	
+dir(Foo.bar)
+
+与dir(object)相同的部分
+'__call__',
+'__delattr__',
+'__dir__',
+'__doc__',
+'__eq__',
+'__format__',
+'__ge__',
+'__getattribute__',
+'__gt__',
+'__hash__',
+'__init__',
+'__init_subclass__',
+'__le__',
+'__lt__',
+'__ne__',
+'__new__',
+'__reduce__',
+'__reduce_ex__',
+'__repr__',
+'__setattr__',
+'__sizeof__',
+'__str__',
+'__subclasshook__'
+
+与dir(object)不同的部分
+'__annotations__',
+'__class__',
+'__closure__',
+'__code__',
+'__defaults__',
+'__dict__',
+'__get__',
+'__globals__',
+'__kwdefaults__',
+'__module__',
+'__name__',
+'__qualname__',
