@@ -42,7 +42,7 @@
  'maketrans',
  'translate',
  
-
+性质判定
  'isalnum',
  'isalpha',
  'isdigit',
@@ -53,6 +53,7 @@
  'endswith',
  'startswith',
  
+ 查找替换
  'count',
  'find',
  'index',
@@ -60,18 +61,21 @@
  'rindex',
  'replace',
  
+ 分切与连接
  'partition',
  'rpartition',
  'rsplit',
  'split',
  'splitlines',
  
+ 变形
  'lower',
  'upper',
  'capitalize',
  'swapcase',
  'title',
  
+ 删除与填充
  'strip',
  'lstrip',
  'rstrip',
@@ -81,7 +85,7 @@
  'rjust',
  'zfill'
  'expandtabs',
- 
+ ——————————————————————
  
  'isdecimal',
  'isidentifier',
