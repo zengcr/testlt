@@ -1,7 +1,6 @@
 生成器对象解析
 
 '__class__',
-'__del__',
 '__delattr__',
 '__dir__',
 '__doc__',
@@ -13,14 +12,10 @@
 '__hash__',
 '__init__',
 '__init_subclass__',
-'__iter__',
 '__le__',
 '__lt__',
-'__name__',
 '__ne__',
 '__new__',
-'__next__',
-'__qualname__',
 '__reduce__',
 '__reduce_ex__',
 '__repr__',
@@ -28,6 +23,14 @@
 '__sizeof__',
 '__str__',
 '__subclasshook__',
+
+'__qualname__',
+
+'__del__',
+'__iter__',
+'__name__',
+'__next__',
+
 'close',
 'gi_code',
 'gi_frame',

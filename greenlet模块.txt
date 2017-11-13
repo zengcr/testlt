@@ -1,0 +1,23 @@
+['GREENLET_USE_GC', 'GREENLET_USE_TRACING', 'GreenletExit', '_C_API', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', '__version__', 'error', 'getcurrent', 'gettrace', 'greenlet', 'settrace']
+
+
+'GREENLET_USE_GC': True,
+'GREENLET_USE_TRACING': True,
+'_C_API': <capsule object "greenlet._C_API" at 0x00000254F12F8B70>,
+
+'GreenletExit': <class 'greenlet.GreenletExit'>,
+'error': <class 'greenlet.error'>,
+
+'greenlet': <class 'greenlet.greenlet'>,
+
+'getcurrent': <built-in function getcurrent>,
+'gettrace': <built-in function gettrace>,
+'settrace': <built-in function settrace>
+
+'__doc__': None,
+'__file__': 'D:\\Python\\Python36\\lib\\site-packages\\greenlet.cp36-win_amd64.pyd',
+'__loader__': <_frozen_importlib_external.ExtensionFileLoader object at 0x00000254F152E940>,
+'__name__': 'greenlet',
+'__package__': '',
+'__spec__': ModuleSpec(name='greenlet', loader=<_frozen_importlib_external.ExtensionFileLoader object at 0x00000254F152E940>, origin='D:\\Python\\Python36\\lib\\site-packages\\greenlet.cp36-win_amd64.pyd'),
+'__version__': '0.4.12',
