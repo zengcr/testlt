@@ -4,7 +4,7 @@
     $ sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
     $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
     amd64:
-       $ sudo add-apt-repository \
+        $ sudo add-apt-repository \
                "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
                $(lsb_release -cs) stable"
     armhf:
@@ -33,15 +33,19 @@
 
 ## 阿里云提供的安装方法
     # step 1: 安装必要的一些系统工具
-    sudo apt-get update
-    sudo apt-get -y install apt-transport-https ca-certificates curl software-properties-common
+            sudo apt-get update
+            sudo apt-get -y install apt-transport-https ca-certificates curl software-properties-common
     # step 2: 安装GPG证书
-    curl -fsSL http://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add -
+            curl -fsSL http://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add -
     # Step 3: 写入软件源信息
-    sudo add-apt-repository "deb [arch=amd64] http://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs) stable"
+        amd64
+            sudo add-apt-repository "deb [arch=amd64] http://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs) stable"
+
+        arm (官方实际未提供，自己加的，需要验证？验证可行)
+            sudo add-apt-repository "deb [arch=armhf] http://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs) stable"
     # Step 4: 更新并安装Docker-CE
-    sudo apt-get -y update
-    sudo apt-get -y install docker-ce
+            sudo apt-get -y update
+            sudo apt-get -y install docker-ce
 
     # 安装指定版本的Docker-CE:
     # Step 1: 查找Docker-CE的版本:
@@ -50,3 +54,7 @@
     #   docker-ce | 17.03.0~ce-0~ubuntu-xenial | http://mirrors.aliyun.com/docker-ce/linux/ubuntu xenial/stable amd64 Packages
     # Step 2: 安装指定版本的Docker-CE: (VERSION例如上面的17.03.1~ce-0~ubuntu-xenial)
     # sudo apt-get -y install docker-ce=[VERSION]
+
+## 官方提供的shell脚本安装方法
+
+        curl -fsSL https://get.docker.com/ | sh

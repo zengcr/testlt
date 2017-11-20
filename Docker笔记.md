@@ -69,19 +69,22 @@
            docker push user/test:latest
 
 ### 操作Docker容器
+- 容器是镜像的一个运行实例，镜像是静态的只读文件，而容器带有运行时需要的可写文件层
 - 创建容器
     - 新建容器
     - 启动容器
     - 新建并启动容器
     - 守护态运行
+    - 退出容器
 
             1. docker create -it ubuntu:latest      # 新建容器但处于停止状态
-            2. docker start af                      # 启动容器
+            2. docker start CONTAINER_NAME          # 启动容器
             3. docker ps                            # 查看运行中的容器
             4. docker run ubuntu /bin/echo 'Hello'  # 直接新建并启动容器，之后自动终止
             5. docker run -it ubuntu:14.04 /bin/bash    # 启动bash终端，允许交互
             6. docker run -d ubuntu /bin/sh -c 'xxx'
             7. docker logs CONTAINER_NAME           # 获取容器的输出信息
+            8. exit
 
 - 终止容器
 
@@ -102,4 +105,80 @@
         2. docker import test.tar - test/ubuntu:v1.0
 
 ### 访问Docker仓库
-- Docker Hub 公共镜像市场
+- Docker Hub 公共镜像市场 `registry.hub.docker.com`
+- pull镜像，不需要登陆
+- push镜像，需要登陆
+    - Docker 可同时登陆很多个账号，账号登陆信息在`/root/.docker/config.json`，可通过`docker logout` 退出登陆。
+    - 当退出登陆后，不能再往对应的仓库push 镜像
+- 直接从Docker 公共市场下载镜像速度很慢，需要安装阿里云加速器。
+    - 安装加速器后，只是pull 速度变快，push 速度依然很慢。
+    - 从官方pull镜像，将镜像push 到自己的仓库地址
+
+            sudo mkdir -p /etc/docker
+            sudo tee /etc/docker/daemon.json <<-'EOF'
+            {
+              "registry-mirrors": ["https://i2go2fx6.mirror.aliyuncs.com"]
+            }
+            EOF
+            sudo systemctl daemon-reload
+            sudo systemctl restart docker
+
+### Docker数据管理
+- 数据卷
+
+        1. 在容器内创建一个数据卷 -v
+        docker run -d -P --name web -v /webapp training/webapp python app.py
+        2. 挂载一个主机目录作为数据卷
+        docker run -d -P --name web -v /src/webapp:/opt/webapp:ro training/webapp python app.py     默认权限是读写rw，ro指定为只读
+- 数据卷容器
+    - 多个容器之间共享一些持续更新的数据
+
+            1. docker run -it -v /dbdata --name dbdata ubuntu
+            2. docker run -it --volumes-from dbdata --name db1 ubuntu
+               docker run -it --volumes-from dbdata --name db2 ubuntu
+            可以从多个容器挂载多个数据卷
+
+- 利用数据卷容器来迁移数据
+- 备份
+
+        docker run --volumes-from dbdata -v $(pwd):/backup --name worker ubuntu tar cvf /backup/backup.tar /dbdata
+- 恢复
+
+        1. docker run -v /dbdata --name dbdata2 ubuntu /bin/bash
+        2. docker run --volumns-from dbdata2 -v $(pwd):/backup busybox tar xvf /backup/backup.tar
+
+### 端口映射与容器互联
+- 端口映射实现访问容器
+    - 从外部访问容器应用
+
+            docker run -d -P training/webapp python app.py
+    - 映射所有接口地址
+
+            docker run -d -p 5000:5000 -p 3000:80 training/webapp python app.py
+    - 映射到指定地址的指定端口
+
+            docker run -d -p 127.0.0.1:5000:5000 training/webapp python app.py
+    - 映射到指定地址的任意端口
+
+            docker run -d -p 127.0.0.1::5000/udp training/webapp python app.py
+    - 查看映射端口配置
+
+            docker port CONTAINER_NAME 5000
+
+- 互联机制实现便捷互访
+    - 自定义容器命名 --name
+
+            docker run -d -P --name web training/webapp python app.py
+            --rm    容器在终止后会立即删除 和-d 参数不能同时使用
+    - 容器互联 --link name:alias
+
+            docker run -d --name db training/postgres
+            docker run -d -P --name web --link db:db training/webapp python app.py
+
+## Docker 常用参数汇总表
+
+        1. run -i -t -d -v -p -P --volumes-from --name --rm --link -h
+        2. ps -a -l
+        3. search -f stars=3
+        4. commit -m -a
+        5. rm/rmi -f
