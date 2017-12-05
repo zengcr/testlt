@@ -33,7 +33,7 @@ yum makecache
 CPU: 32
 内存:64G
 
-Controller节点和Compute节点配置
+Controller节点和Compute节点配置 Cinder节点
 CPU：32c
 MEM：4G
 
@@ -55,12 +55,16 @@ hostnamectl set-hostname controller
 
 如果是compute就运行：
 hostnamectl set-hostname compute1
+hostnamectl set-hostname compute2
+
 cinder节点就运行：
 hostnamectl set-hostname cinder
 
 # 配置每个节点的/etc/hosts文件
 192.168.68.14	controller
-192.168.68.12	compute01
+192.168.68.13	cinder
+192.168.68.12	compute1
+192.168.68.11	compute2
 
 # NTP同步系统时间
 ntpdate cn.pool.ntp.org
@@ -69,7 +73,9 @@ chmod +x /etc/rc.d/rc.local
 
 配置ip，网络配置规划
 controller节点：192.168.68.14
+cinder节点：	192.168.68.13
 compute1 节点：	192.168.68.12
+compute2 节点：	192.168.68.11
 
 
 二、搭建Mariadb
@@ -471,7 +477,7 @@ Alias /nova-placement-api /usr/bin/nova-placement-api
 11、验证nova服务
 # unset OS_TOKEN OS_URL
 # source /root/admin-openrc
-# nova service-list 	执行此命令为空，是否是正常的呢？
+# nova service-list
 # openstack endpoint list 查看endpoint list
 看是否有结果正确输出
 
@@ -654,12 +660,391 @@ f. 创建路由，我们在界面上操作
 # systemctl restart httpd.service memcached.service
 # systemctl status httpd.service memcached.service
 到此，Controller节点搭建完毕，打开firefox浏览器即可访问http://192.168.68.14/dashboard/ 可进入openstack界面！
+注意：需要将WSGIApplicationGroup %{GLOBAL} 加入到/etc/httpd/conf.d/openstack-dashboard.conf 文件中，不然会出现500错误
+
+
+九、安装配置cinder
+1、创建数据库用户并赋予权限
+CREATE DATABASE cinder;
+GRANT ALL PRIVILEGES ON cinder.* TO 'cinder'@'localhost' IDENTIFIED BY 'devops';
+GRANT ALL PRIVILEGES ON cinder.* TO 'cinder'@'%' IDENTIFIED BY 'devops';
+
+2、创建cinder用户并赋予admin权限
+# source /root/admin-openrc
+# openstack user create --domain default cinder --password devops
+# openstack role add --project service --user cinder admin
+
+3、创建volume服务
+# openstack service create --name cinder --description "OpenStack Block Storage" volume
+# openstack service create --name cinderv2 --description "OpenStack Block Storage" volumev2
+
+4、创建endpoint
+# openstack endpoint create --region RegionOne volume public http://controller:8776/v1/%\(tenant_id\)s
+# openstack endpoint create --region RegionOne volume internal http://controller:8776/v1/%\(tenant_id\)s
+# openstack endpoint create --region RegionOne volume admin http://controller:8776/v1/%\(tenant_id\)s
+# openstack endpoint create --region RegionOne volumev2 public http://controller:8776/v2/%\(tenant_id\)s
+# openstack endpoint create --region RegionOne volumev2 internal http://controller:8776/v2/%\(tenant_id\)s
+# openstack endpoint create --region RegionOne volumev2 admin http://controller:8776/v2/%\(tenant_id\)s
+
+5、安装cinder相关服务
+# yum install openstack-cinder -y
+
+6、配置cinder配置文件
+# cp /etc/cinder/cinder.conf /etc/cinder/cinder.conf.bak
+# >/etc/cinder/cinder.conf
+# openstack-config --set /etc/cinder/cinder.conf DEFAULT transport_url rabbit://openstack:litian@controller
+# openstack-config --set /etc/cinder/cinder.conf DEFAULT my_ip 192.168.68.14
+# openstack-config --set /etc/cinder/cinder.conf DEFAULT auth_strategy keystone
+# openstack-config --set /etc/cinder/cinder.conf database connection mysql+pymysql://cinder:devops@controller/cinder
+# openstack-config --set /etc/cinder/cinder.conf keystone_authtoken auth_uri http://controller:5000
+# openstack-config --set /etc/cinder/cinder.conf keystone_authtoken auth_url http://controller:35357
+# openstack-config --set /etc/cinder/cinder.conf keystone_authtoken memcached_servers controller:11211
+# openstack-config --set /etc/cinder/cinder.conf keystone_authtoken auth_type password
+# openstack-config --set /etc/cinder/cinder.conf keystone_authtoken project_domain_name default
+# openstack-config --set /etc/cinder/cinder.conf keystone_authtoken user_domain_name default
+# openstack-config --set /etc/cinder/cinder.conf keystone_authtoken project_name service
+# openstack-config --set /etc/cinder/cinder.conf keystone_authtoken username cinder
+# openstack-config --set /etc/cinder/cinder.conf keystone_authtoken password devops
+# openstack-config --set /etc/cinder/cinder.conf oslo_concurrency lock_path /var/lib/cinder/tmp
+
+7、上同步数据库
+# su -s /bin/sh -c "cinder-manage db sync" cinder
+
+8、在controller上启动cinder服务，并设置开机启动
+# systemctl enable openstack-cinder-api.service openstack-cinder-scheduler.service
+# systemctl restart openstack-cinder-api.service openstack-cinder-scheduler.service
+# systemctl status openstack-cinder-api.service openstack-cinder-scheduler.service
+
+9、安装Cinder节点，Cinder节点这里我们需要额外的添加一个硬盘（/dev/sdb)用作cinder的存储服务 (注意！这一步是在cinder节点操作的）
+# yum install lvm2 -y
+10、启动服务并设置为开机自启 (注意！这一步是在cinder节点操作的）
+# systemctl enable lvm2-lvmetad.service
+# systemctl start lvm2-lvmetad.service
+# systemctl status lvm2-lvmetad.service
+
+11、创建lvm, 这里的/dev/sdb就是额外添加的硬盘 (注意！这一步是在cinder节点操作的）
+# fdisk -l
+# pvcreate /dev/sdb
+# vgcreate cinder-volumes /dev/sdb
+
+12. 编辑存储节点lvm.conf文件 (注意！这一步是在cinder节点操作的）
+# vim /etc/lvm/lvm.conf
+在devices 下面添加 filter = [ "a/sda/", "a/sdb/", "r/.*/"] ，130行 ，如图：
+然后重启下lvm2服务：
+# systemctl restart lvm2-lvmetad.service
+# systemctl status lvm2-lvmetad.service
+13、安装openstack-cinder、targetcli (注意！这一步是在cinder节点操作的）
+# yum install openstack-cinder openstack-utils targetcli python-keystone ntpdate -y
+14、配置cinder配置文件 (注意！这一步是在cinder节点操作的）
+# cp /etc/cinder/cinder.conf /etc/cinder/cinder.conf.bak
+# >/etc/cinder/cinder.conf
+# openstack-config --set /etc/cinder/cinder.conf DEFAULT auth_strategy keystone
+# openstack-config --set /etc/cinder/cinder.conf DEFAULT my_ip 10.1.1.122
+# openstack-config --set /etc/cinder/cinder.conf DEFAULT enabled_backends lvm
+# openstack-config --set /etc/cinder/cinder.conf DEFAULT glance_api_servers http://controller:9292
+# openstack-config --set /etc/cinder/cinder.conf DEFAULT glance_api_version 2
+# openstack-config --set /etc/cinder/cinder.conf DEFAULT enable_v1_api True
+# openstack-config --set /etc/cinder/cinder.conf DEFAULT enable_v2_api True
+# openstack-config --set /etc/cinder/cinder.conf DEFAULT enable_v3_api True
+# openstack-config --set /etc/cinder/cinder.conf DEFAULT storage_availability_zone nova
+# openstack-config --set /etc/cinder/cinder.conf DEFAULT default_availability_zone nova
+# openstack-config --set /etc/cinder/cinder.conf DEFAULT os_region_name RegionOne
+# openstack-config --set /etc/cinder/cinder.conf DEFAULT api_paste_config /etc/cinder/api-paste.ini
+# openstack-config --set /etc/cinder/cinder.conf DEFAULT transport_url rabbit://openstack:devops@controller
+# openstack-config --set /etc/cinder/cinder.conf database connection mysql+pymysql://cinder:devops@controller/cinder
+# openstack-config --set /etc/cinder/cinder.conf keystone_authtoken auth_uri http://controller:5000
+# openstack-config --set /etc/cinder/cinder.conf keystone_authtoken auth_url http://controller:35357
+# openstack-config --set /etc/cinder/cinder.conf keystone_authtoken memcached_servers controller:11211
+# openstack-config --set /etc/cinder/cinder.conf keystone_authtoken auth_type password
+# openstack-config --set /etc/cinder/cinder.conf keystone_authtoken project_domain_name default
+# openstack-config --set /etc/cinder/cinder.conf keystone_authtoken user_domain_name default
+# openstack-config --set /etc/cinder/cinder.conf keystone_authtoken project_name service
+# openstack-config --set /etc/cinder/cinder.conf keystone_authtoken username cinder
+# openstack-config --set /etc/cinder/cinder.conf keystone_authtoken password devops
+# openstack-config --set /etc/cinder/cinder.conf lvm volume_driver cinder.volume.drivers.lvm.LVMVolumeDriver
+# openstack-config --set /etc/cinder/cinder.conf lvm volume_group cinder-volumes
+# openstack-config --set /etc/cinder/cinder.conf lvm iscsi_protocol iscsi
+# openstack-config --set /etc/cinder/cinder.conf lvm iscsi_helper lioadm
+# openstack-config --set /etc/cinder/cinder.conf oslo_concurrency lock_path /var/lib/cinder/tmp
+15、启动openstack-cinder-volume和target并设置开机启动 (注意！这一步是在cinder节点操作的）
+# systemctl enable openstack-cinder-volume.service target.service
+# systemctl restart openstack-cinder-volume.service target.service
+# systemctl status openstack-cinder-volume.service target.service
+
+16、验证cinder服务是否正常
+# source /root/admin-openrc
+# cinder service-list
 
 
 
+Compute节点部署
+一、安装相关依赖包
+# yum install openstack-selinux python-openstackclient yum-plugin-priorities openstack-nova-compute openstack-utils ntpdate -y
+1. 配置nova.conf
+# cp /etc/nova/nova.conf /etc/nova/nova.conf.bak
+# >/etc/nova/nova.conf
+# openstack-config --set /etc/nova/nova.conf DEFAULT auth_strategy keystone
+# openstack-config --set /etc/nova/nova.conf DEFAULT my_ip 192.168.68.12
+# openstack-config --set /etc/nova/nova.conf DEFAULT use_neutron True
+# openstack-config --set /etc/nova/nova.conf DEFAULT firewall_driver nova.virt.firewall.NoopFirewallDriver
+# openstack-config --set /etc/nova/nova.conf DEFAULT transport_url rabbit://openstack:litian@controller
+# openstack-config --set /etc/nova/nova.conf keystone_authtoken auth_uri http://controller:5000
+# openstack-config --set /etc/nova/nova.conf keystone_authtoken auth_url http://controller:35357
+# openstack-config --set /etc/nova/nova.conf keystone_authtoken memcached_servers controller:11211
+# openstack-config --set /etc/nova/nova.conf keystone_authtoken auth_type password
+# openstack-config --set /etc/nova/nova.conf keystone_authtoken project_domain_name default
+# openstack-config --set /etc/nova/nova.conf keystone_authtoken user_domain_name default
+# openstack-config --set /etc/nova/nova.conf keystone_authtoken project_name service
+# openstack-config --set /etc/nova/nova.conf keystone_authtoken username nova
+# openstack-config --set /etc/nova/nova.conf keystone_authtoken password devops
+# openstack-config --set /etc/nova/nova.conf placement auth_uri http://controller:5000
+# openstack-config --set /etc/nova/nova.conf placement auth_url http://controller:35357
+# openstack-config --set /etc/nova/nova.conf placement memcached_servers controller:11211
+# openstack-config --set /etc/nova/nova.conf placement auth_type password
+# openstack-config --set /etc/nova/nova.conf placement project_domain_name default
+# openstack-config --set /etc/nova/nova.conf placement user_domain_name default
+# openstack-config --set /etc/nova/nova.conf placement project_name service
+# openstack-config --set /etc/nova/nova.conf placement username placement
+# openstack-config --set /etc/nova/nova.conf placement password devops
+# openstack-config --set /etc/nova/nova.conf placement os_region_name RegionOne
+# openstack-config --set /etc/nova/nova.conf vnc enabled True
+# openstack-config --set /etc/nova/nova.conf vnc keymap en-us
+# openstack-config --set /etc/nova/nova.conf vnc vncserver_listen 0.0.0.0
+# openstack-config --set /etc/nova/nova.conf vnc vncserver_proxyclient_address 192.168.68.12
+# openstack-config --set /etc/nova/nova.conf vnc novncproxy_base_url http://192.168.68.14:6080/vnc_auto.html
+# openstack-config --set /etc/nova/nova.conf glance api_servers http://controller:9292
+# openstack-config --set /etc/nova/nova.conf oslo_concurrency lock_path /var/lib/nova/tmp
+# openstack-config --set /etc/nova/nova.conf libvirt virt_type kvm
+
+2. 设置libvirtd.service 和openstack-nova-compute.service开机启动
+# systemctl enable libvirtd.service openstack-nova-compute.service
+# systemctl restart libvirtd.service openstack-nova-compute.service
+# systemctl status libvirtd.service openstack-nova-compute.service
+
+3. 到controller上执行验证
+# source /root/admin-openrc
+# openstack compute service list
+
+二、安装Neutron
+1. 安装相关软件包
+# yum install openstack-neutron-linuxbridge ebtables ipset -y
+
+2. 配置neutron.conf
+# cp /etc/neutron/neutron.conf /etc/neutron/neutron.conf.bak
+# >/etc/neutron/neutron.conf
+# openstack-config --set /etc/neutron/neutron.conf DEFAULT auth_strategy keystone
+# openstack-config --set /etc/neutron/neutron.conf DEFAULT advertise_mtu True
+# openstack-config --set /etc/neutron/neutron.conf DEFAULT dhcp_agents_per_network 2
+# openstack-config --set /etc/neutron/neutron.conf DEFAULT control_exchange neutron
+# openstack-config --set /etc/neutron/neutron.conf DEFAULT nova_url http://controller:8774/v2
+# openstack-config --set /etc/neutron/neutron.conf DEFAULT transport_url rabbit://openstack:litian@controller
+# openstack-config --set /etc/neutron/neutron.conf keystone_authtoken auth_uri http://controller:5000
+# openstack-config --set /etc/neutron/neutron.conf keystone_authtoken auth_url http://controller:35357
+# openstack-config --set /etc/neutron/neutron.conf keystone_authtoken memcached_servers controller:11211
+# openstack-config --set /etc/neutron/neutron.conf keystone_authtoken auth_type password
+# openstack-config --set /etc/neutron/neutron.conf keystone_authtoken project_domain_name default
+# openstack-config --set /etc/neutron/neutron.conf keystone_authtoken user_domain_name default
+# openstack-config --set /etc/neutron/neutron.conf keystone_authtoken project_name service
+# openstack-config --set /etc/neutron/neutron.conf keystone_authtoken username neutron
+# openstack-config --set /etc/neutron/neutron.conf keystone_authtoken password devops
+# openstack-config --set /etc/neutron/neutron.conf oslo_concurrency lock_path /var/lib/neutron/tmp
+
+3. 配置/etc/neutron/plugins/ml2/linuxbridge_agent.ini
+# openstack-config --set /etc/neutron/plugins/ml2/linuxbridge_agent.ini vxlan enable_vxlan True
+# openstack-config --set /etc/neutron/plugins/ml2/linuxbridge_agent.ini vxlan local_ip 192.168.68.14
+# openstack-config --set /etc/neutron/plugins/ml2/linuxbridge_agent.ini vxlan l2_population True
+# openstack-config --set /etc/neutron/plugins/ml2/linuxbridge_agent.ini securitygroup enable_security_group True
+# openstack-config --set /etc/neutron/plugins/ml2/linuxbridge_agent.ini securitygroup firewall_driver neutron.agent.linux.iptables_firewall.IptablesFirewallDriver
+
+4. 配置nova.conf
+# openstack-config --set /etc/nova/nova.conf neutron url http://controller:9696
+# openstack-config --set /etc/nova/nova.conf neutron auth_url http://controller:35357
+# openstack-config --set /etc/nova/nova.conf neutron auth_type password
+# openstack-config --set /etc/nova/nova.conf neutron project_domain_name default
+# openstack-config --set /etc/nova/nova.conf neutron user_domain_name default
+# openstack-config --set /etc/nova/nova.conf neutron region_name RegionOne
+# openstack-config --set /etc/nova/nova.conf neutron project_name service
+# openstack-config --set /etc/nova/nova.conf neutron username neutron
+# openstack-config --set /etc/nova/nova.conf neutron password devops
+
+5. 重启和enable相关服务
+# systemctl restart libvirtd.service openstack-nova-compute.service
+# systemctl enable neutron-linuxbridge-agent.service
+# systemctl restart neutron-linuxbridge-agent.service
+# systemctl status libvirtd.service openstack-nova-compute.service neutron-linuxbridge-agent.service
+
+三、计算节点结合Cinder
+1.计算节点要是想用cinder,那么需要配置nova配置文件 (注意！这一步是在计算节点操作的）
+# openstack-config --set /etc/nova/nova.conf cinder os_region_name RegionOne
+# systemctl restart openstack-nova-compute.service
+
+2.然后在controller上重启nova服务
+# systemctl restart openstack-nova-api.service
+# systemctl status openstack-nova-api.service
+
+四. 在controler上执行验证
+# source /root/admin-openrc
+# neutron agent-list
+# nova-manage cell_v2 discover_hosts
+到此，Compute节点搭建完毕，运行nova host-list可以查看新加入的compute1节点 	nova host-list命令已失效。
+
+如果需要再添加另外一个compute节点，只要重复下第二大部即可，记得把计算机名和IP地址改下。
+附-创建配额命令
+# openstack flavor create m1.tiny --id 1 --ram 512 --disk 1 --vcpus 1
+# openstack flavor create m1.small --id 2 --ram 2048 --disk 20 --vcpus 1
+# openstack flavor create m1.medium --id 3 --ram 4096 --disk 40 --vcpus 2
+# openstack flavor create m1.large --id 4 --ram 8192 --disk 80 --vcpus 4
+# openstack flavor create m1.xlarge --id 5 --ram 16384 --disk 160 --vcpus 8
+# openstack flavor list
 
 
+Compute2节点部署
+一、安装相关依赖包
+# yum install openstack-selinux python-openstackclient yum-plugin-priorities openstack-nova-compute openstack-utils ntpdate -y
+1. 配置nova.conf
+# cp /etc/nova/nova.conf /etc/nova/nova.conf.bak
+# >/etc/nova/nova.conf
+# openstack-config --set /etc/nova/nova.conf DEFAULT auth_strategy keystone
+# openstack-config --set /etc/nova/nova.conf DEFAULT my_ip 192.168.68.11
+# openstack-config --set /etc/nova/nova.conf DEFAULT use_neutron True
+# openstack-config --set /etc/nova/nova.conf DEFAULT firewall_driver nova.virt.firewall.NoopFirewallDriver
+# openstack-config --set /etc/nova/nova.conf DEFAULT transport_url rabbit://openstack:litian@controller
+# openstack-config --set /etc/nova/nova.conf keystone_authtoken auth_uri http://controller:5000
+# openstack-config --set /etc/nova/nova.conf keystone_authtoken auth_url http://controller:35357
+# openstack-config --set /etc/nova/nova.conf keystone_authtoken memcached_servers controller:11211
+# openstack-config --set /etc/nova/nova.conf keystone_authtoken auth_type password
+# openstack-config --set /etc/nova/nova.conf keystone_authtoken project_domain_name default
+# openstack-config --set /etc/nova/nova.conf keystone_authtoken user_domain_name default
+# openstack-config --set /etc/nova/nova.conf keystone_authtoken project_name service
+# openstack-config --set /etc/nova/nova.conf keystone_authtoken username nova
+# openstack-config --set /etc/nova/nova.conf keystone_authtoken password devops
+# openstack-config --set /etc/nova/nova.conf placement auth_uri http://controller:5000
+# openstack-config --set /etc/nova/nova.conf placement auth_url http://controller:35357
+# openstack-config --set /etc/nova/nova.conf placement memcached_servers controller:11211
+# openstack-config --set /etc/nova/nova.conf placement auth_type password
+# openstack-config --set /etc/nova/nova.conf placement project_domain_name default
+# openstack-config --set /etc/nova/nova.conf placement user_domain_name default
+# openstack-config --set /etc/nova/nova.conf placement project_name service
+# openstack-config --set /etc/nova/nova.conf placement username placement
+# openstack-config --set /etc/nova/nova.conf placement password devops
+# openstack-config --set /etc/nova/nova.conf placement os_region_name RegionOne
+# openstack-config --set /etc/nova/nova.conf vnc enabled True
+# openstack-config --set /etc/nova/nova.conf vnc keymap en-us
+# openstack-config --set /etc/nova/nova.conf vnc vncserver_listen 0.0.0.0
+# openstack-config --set /etc/nova/nova.conf vnc vncserver_proxyclient_address 192.168.68.11
+# openstack-config --set /etc/nova/nova.conf vnc novncproxy_base_url http://192.168.68.14:6080/vnc_auto.html
+# openstack-config --set /etc/nova/nova.conf glance api_servers http://controller:9292
+# openstack-config --set /etc/nova/nova.conf oslo_concurrency lock_path /var/lib/nova/tmp
+# openstack-config --set /etc/nova/nova.conf libvirt virt_type kvm
+
+2. 设置libvirtd.service 和openstack-nova-compute.service开机启动
+# systemctl enable libvirtd.service openstack-nova-compute.service
+# systemctl restart libvirtd.service openstack-nova-compute.service
+# systemctl status libvirtd.service openstack-nova-compute.service
+
+3. 到controller上执行验证
+# source /root/admin-openrc
+# openstack compute service list
+
+二、安装Neutron
+1. 安装相关软件包
+# yum install openstack-neutron-linuxbridge ebtables ipset -y
+
+2. 配置neutron.conf
+# cp /etc/neutron/neutron.conf /etc/neutron/neutron.conf.bak
+# >/etc/neutron/neutron.conf
+# openstack-config --set /etc/neutron/neutron.conf DEFAULT auth_strategy keystone
+# openstack-config --set /etc/neutron/neutron.conf DEFAULT advertise_mtu True
+# openstack-config --set /etc/neutron/neutron.conf DEFAULT dhcp_agents_per_network 2
+# openstack-config --set /etc/neutron/neutron.conf DEFAULT control_exchange neutron
+# openstack-config --set /etc/neutron/neutron.conf DEFAULT nova_url http://controller:8774/v2
+# openstack-config --set /etc/neutron/neutron.conf DEFAULT transport_url rabbit://openstack:litian@controller
+# openstack-config --set /etc/neutron/neutron.conf keystone_authtoken auth_uri http://controller:5000
+# openstack-config --set /etc/neutron/neutron.conf keystone_authtoken auth_url http://controller:35357
+# openstack-config --set /etc/neutron/neutron.conf keystone_authtoken memcached_servers controller:11211
+# openstack-config --set /etc/neutron/neutron.conf keystone_authtoken auth_type password
+# openstack-config --set /etc/neutron/neutron.conf keystone_authtoken project_domain_name default
+# openstack-config --set /etc/neutron/neutron.conf keystone_authtoken user_domain_name default
+# openstack-config --set /etc/neutron/neutron.conf keystone_authtoken project_name service
+# openstack-config --set /etc/neutron/neutron.conf keystone_authtoken username neutron
+# openstack-config --set /etc/neutron/neutron.conf keystone_authtoken password devops
+# openstack-config --set /etc/neutron/neutron.conf oslo_concurrency lock_path /var/lib/neutron/tmp
+
+3. 配置/etc/neutron/plugins/ml2/linuxbridge_agent.ini
+# openstack-config --set /etc/neutron/plugins/ml2/linuxbridge_agent.ini vxlan enable_vxlan True
+# openstack-config --set /etc/neutron/plugins/ml2/linuxbridge_agent.ini vxlan local_ip 192.168.68.11
+# openstack-config --set /etc/neutron/plugins/ml2/linuxbridge_agent.ini vxlan l2_population True
+# openstack-config --set /etc/neutron/plugins/ml2/linuxbridge_agent.ini securitygroup enable_security_group True
+# openstack-config --set /etc/neutron/plugins/ml2/linuxbridge_agent.ini securitygroup firewall_driver neutron.agent.linux.iptables_firewall.IptablesFirewallDriver
+
+4. 配置nova.conf
+# openstack-config --set /etc/nova/nova.conf neutron url http://controller:9696
+# openstack-config --set /etc/nova/nova.conf neutron auth_url http://controller:35357
+# openstack-config --set /etc/nova/nova.conf neutron auth_type password
+# openstack-config --set /etc/nova/nova.conf neutron project_domain_name default
+# openstack-config --set /etc/nova/nova.conf neutron user_domain_name default
+# openstack-config --set /etc/nova/nova.conf neutron region_name RegionOne
+# openstack-config --set /etc/nova/nova.conf neutron project_name service
+# openstack-config --set /etc/nova/nova.conf neutron username neutron
+# openstack-config --set /etc/nova/nova.conf neutron password devops
+
+5. 重启和enable相关服务
+# systemctl restart libvirtd.service openstack-nova-compute.service
+# systemctl enable neutron-linuxbridge-agent.service
+# systemctl restart neutron-linuxbridge-agent.service
+# systemctl status libvirtd.service openstack-nova-compute.service neutron-linuxbridge-agent.service
 
 
+实际cinder节点的配置
+11、创建lvm, 这里的/dev/sdb就是额外添加的硬盘 (注意！这一步是在cinder节点操作的）
+# fdisk -l
+# pvcreate /dev/sda2
+# vgcreate cinder-volumes /dev/sda2
 
+12. 编辑存储节点lvm.conf文件 (注意！这一步是在cinder节点操作的）
+# vim /etc/lvm/lvm.conf
+在devices 下面添加 filter = [ "a/sda2/", "a/sdb/", "r/.*/"] ，130行 ，如图：
+然后重启下lvm2服务：
+# systemctl restart lvm2-lvmetad.service
+# systemctl status lvm2-lvmetad.service
+
+13、安装openstack-cinder、targetcli (注意！这一步是在cinder节点操作的）
+# yum install openstack-cinder openstack-utils targetcli python-keystone ntpdate -y
+
+14、配置cinder配置文件 (注意！这一步是在cinder节点操作的）
+# cp /etc/cinder/cinder.conf /etc/cinder/cinder.conf.bak
+# >/etc/cinder/cinder.conf
+# openstack-config --set /etc/cinder/cinder.conf DEFAULT auth_strategy keystone
+# openstack-config --set /etc/cinder/cinder.conf DEFAULT my_ip 192.168.68.13
+# openstack-config --set /etc/cinder/cinder.conf DEFAULT enabled_backends lvm
+# openstack-config --set /etc/cinder/cinder.conf DEFAULT glance_api_servers http://controller:9292
+# openstack-config --set /etc/cinder/cinder.conf DEFAULT glance_api_version 2
+# openstack-config --set /etc/cinder/cinder.conf DEFAULT enable_v1_api True
+# openstack-config --set /etc/cinder/cinder.conf DEFAULT enable_v2_api True
+# openstack-config --set /etc/cinder/cinder.conf DEFAULT enable_v3_api True
+# openstack-config --set /etc/cinder/cinder.conf DEFAULT storage_availability_zone nova
+# openstack-config --set /etc/cinder/cinder.conf DEFAULT default_availability_zone nova
+# openstack-config --set /etc/cinder/cinder.conf DEFAULT os_region_name RegionOne
+# openstack-config --set /etc/cinder/cinder.conf DEFAULT api_paste_config /etc/cinder/api-paste.ini
+# openstack-config --set /etc/cinder/cinder.conf DEFAULT transport_url rabbit://openstack:litian@controller
+# openstack-config --set /etc/cinder/cinder.conf database connection mysql+pymysql://cinder:devops@controller/cinder
+# openstack-config --set /etc/cinder/cinder.conf keystone_authtoken auth_uri http://controller:5000
+# openstack-config --set /etc/cinder/cinder.conf keystone_authtoken auth_url http://controller:35357
+# openstack-config --set /etc/cinder/cinder.conf keystone_authtoken memcached_servers controller:11211
+# openstack-config --set /etc/cinder/cinder.conf keystone_authtoken auth_type password
+# openstack-config --set /etc/cinder/cinder.conf keystone_authtoken project_domain_name default
+# openstack-config --set /etc/cinder/cinder.conf keystone_authtoken user_domain_name default
+# openstack-config --set /etc/cinder/cinder.conf keystone_authtoken project_name service
+# openstack-config --set /etc/cinder/cinder.conf keystone_authtoken username cinder
+# openstack-config --set /etc/cinder/cinder.conf keystone_authtoken password devops
+# openstack-config --set /etc/cinder/cinder.conf lvm volume_driver cinder.volume.drivers.lvm.LVMVolumeDriver
+# openstack-config --set /etc/cinder/cinder.conf lvm volume_group cinder-volumes
+# openstack-config --set /etc/cinder/cinder.conf lvm iscsi_protocol iscsi
+# openstack-config --set /etc/cinder/cinder.conf lvm iscsi_helper lioadm
+# openstack-config --set /etc/cinder/cinder.conf oslo_concurrency lock_path /var/lib/cinder/tmp
+
+15、启动openstack-cinder-volume和target并设置开机启动 (注意！这一步是在cinder节点操作的）
+# systemctl enable openstack-cinder-volume.service target.service
+# systemctl restart openstack-cinder-volume.service target.service
+# systemctl status openstack-cinder-volume.service target.service
 

@@ -1,0 +1,36 @@
+OpenStack每个节点的信息
+控制节点
+	安装Mariadb
+	RabbitMQ
+	Keystone
+	Glance
+	Nova
+	Neutron
+	Dashboard(Horizon)
+	Cinder
+	
+计算节点
+	Nova
+	Neutron
+	
+每个核心组件安装的包：
+控制节点：
+Keystone（安装keystone和memcached）
+	yum install openstack-keystone httpd mod_wsgi memcached python-memcached python-openstackclient openstack-utils 
+Glance
+	yum install openstack-glance 
+Nova
+	yum install openstack-nova-api openstack-nova-conductor openstack-nova-console openstack-nova-novncproxy openstack-nova-scheduler
+Neutron
+	yum install openstack-neutron openstack-neutron-ml2 openstack-neutron-linuxbridge ebtables 
+Horizon
+	yum install openstack-dashboard 
+Cinder
+	yum install openstack-cinder 
+
+Cinder节点：
+yum install openstack-cinder targetcli python-keystone ntpdate openstack-utils 
+
+计算节点：
+yum install openstack-selinux yum-plugin-priorities openstack-nova-compute ntpdate python-openstackclient openstack-utils 
+

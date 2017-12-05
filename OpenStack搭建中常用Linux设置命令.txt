@@ -20,3 +20,21 @@
 		
 		
 # rabbitmqctl change_password guest openstack     # 将guest用户密码修改为openstack
+
+生成密钥对
+ssh-keygen -t rsa 
+ssh-copy-id -i /root/.ssh/id_rsa.pub -p 22 root@server_ip
+
+Linux系统配置免密码的方式：
+1：ssh-keygen -t rsa
+生成密钥
+2：ssh-copy-id -i ~/.ssh/id_rsa.pub jifeng@jifeng02
+把本机的公钥追到jifeng02的 .ssh/authorized_keys 里
+3：测试
+[plain] view plain copy
+[jifeng@jifeng04 .ssh]$ ssh jifeng02  
+Last login: Thu Aug  7 16:37:55 2014 from jifeng04  
+[jifeng@jifeng02 ~]$   
+
+4：如果ssh的端口不是22，可用下面命令
+ssh-copy-id -i ~/.ssh/id_rsa.pub "-p 23 jifeng@jifeng03"
