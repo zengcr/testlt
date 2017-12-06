@@ -12,8 +12,8 @@ Python高效开发实战：Django、Tornado、Flask、Twisted
 Flask Web开发：基于Python的Web应用开发实战
 Python高级编程
 Python 3面向对象编程
-华章程序员书库·Python编程实战：运用设计模式、并发和程序库创建高质量程序
-编写高质量代码 改善Python程序的91个建议
+Python高手之路 第3版
+Python编程实战：运用设计模式、并发和程序库创建高质量程序编写高质量代码改善Python程序的91个建议
 Effective Python 编写高质量Python代码的59个有效方法
 
 鸟哥的Linux私房菜 （基础学习篇 第三版）
