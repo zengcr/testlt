@@ -2,7 +2,7 @@
 - socket模块
 
         gethostbyname()     # 通过主机名获取ip地址
-        getservbyname()     # 查询服务的端口号
+        getservbyname()     # 通过服务名查询服务的端口号，例如www 由80端口提供
         fileno()            # 查询操作系统维护的套接字标识，是一个整数
         getsockname()       # 获取套接字绑定的的IP地址及端口，是一个二元组
         settimeout()        # 
