@@ -7,10 +7,10 @@
         myenv/Scripts/deactivate# 退出虚拟环境
         
 
-## 使用第三方模块virtualvenv
+## 使用第三方模块virtualenv
 
-        pip install virtualvenv
-        virutalvenv venv        # venv为创建虚拟环境的目录
+        pip install virtualenv
+        virutalenv venv        # venv为创建虚拟环境的目录
         venv/bin/activate       # 激活虚拟环境
         venv/bin/deactivate     # 退出虚拟环境
 
