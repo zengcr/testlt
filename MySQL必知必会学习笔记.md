@@ -95,4 +95,13 @@
 
 ### 第21章 创建和操纵表
 - 创建表 `CREATE TABLE`
-- 
+
+
+# MySQL 知识点
+- MySQL查看最大连接和修改最大连接数
+	- 1、查看最大连接数
+
+			show variables like '%max_connections%';
+	- 2、修改最大连接数
+
+			set GLOBAL max_connections = 200;
