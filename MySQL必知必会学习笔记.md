@@ -1,9 +1,9 @@
 # 《MySQL必知必会》学习笔记
 - 数据对象 SCHEMA\ TABLE\ VIEW\ INDEX  
 - 数据查询 SELECT  
-- 数据定义 CREATE\ DROP\ ALTER  
-- 数据操纵 INSERT\ DELETE\ UPDATA  
-- 数据控制 GRANT\ REVOKE
+- 数据定义 CREATE\ DROP\ ALTER  			# DDL
+- 数据操纵 INSERT\ DELETE\ UPDATE  		# DML
+- 数据控制 GRANT\ REVOKE					# DCL
 
 ### 第1章 数据库常用概念介绍
 

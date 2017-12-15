@@ -1,3 +1,4 @@
+# 熟悉的
 ?         (\?) Synonym for `help'.
 help      (\h) Display this help.
 exit      (\q) Exit mysql. Same as quit.	--退出mysql
@@ -12,9 +13,9 @@ use       (\u) Use another database. Takes database name as argument.	--切换�
 notee     (\t) Don't write into outfile.			--关闭输出到文件
 tee       (\T) Set outfile [to_outfile]. Append everything into given outfile.	--操作结果输出到文件
 
+# 不熟悉的
 List of all MySQL commands:
 Note that all text commands must be first on line and end with ';'
-
 clear     (\c) Clear the current input statement.	--清除当前输入的语句
 connect   (\r) Reconnect to the server. Optional arguments are db and host. 	--重新连接，通常用于被剔除或异常断开后重新连接
 ego       (\G) Send command to mysql server, display result vertically.		--控制结果显示为垂直显示
@@ -26,3 +27,162 @@ charset   (\C) Switch to another charset. Might be needed for processing binlog 
 warnings  (\W) Show warnings after every statement								--打印警告信息
 nowarning (\w) Don't show warnings after every statement.
 resetconnection(\x) Clean session context.
+
+在Windows上操作MySQL:
+启动：NET START mysql                  
+停止：NET STOP mysql
+杀死MySQL服务器：C:\mysql\bin\mysqladmin -u root shutdown
+
+# 常用命令
+mysql –h 主机名 –u 用户名 –p 用户密码          连接MySQL服务器
+当前是哪个数据库		mysql> SELECT DATABASE();
+当前数据库包含哪些表	mysql> SHOW TABLES;
+查看表结构				mysql> DESCRIBE 表名;
+查看服务器上当前存在什么数据库	mysql> SHOW DATABASES;
+创建数据库				mysql> CREATE DATABASE 库名；
+创建数据库中的表		create table TABLENAME (NAME1 int, NAME2 char(10), …… );
+重命名表				mysql > alter table t1 rename t2;
+备份数据库				shell> mysqldump -h host -u root -p dbname >dbname_backup.sql
+恢复数据库				shell> mysqladmin -h myhost -u root -p create dbname
+删除数据库前，有提示	mysqladmin drop databasename；
+直接删除数据库，不提醒	drop database name
+	
+# Mysql 常见操作 https://www.cnblogs.com/pycode/p/mysql-orm.html
+## 数据库操作
+
+创建数据库
+　　　　create database fuzjtest
+
+删除数据库
+　　　　drop database fuzjtest
+
+查询数据库
+　　　　show databases
+
+切换数据库
+　　　　use databas 123123 ###用户授权
+
+创建用户
+　　　　create user '用户名'@'IP地址' identified by '密码';
+
+删除用户
+　　　　drop user '用户名'@'IP地址';
+
+修改用户
+　　　　rename user '用户名'@'IP地址' to '新用户名'@'IP地址';
+
+修改密码
+　　　　set password for '用户名'@'IP地址' = Password('新密码')
+
+查看权限
+　　　　show grants for '用户'@'IP地址'
+
+授权
+　　　　grant 权限 on 数据库.表 to '用户'@'IP地址'
+
+取消权限
+		revoke 权限 on 数据库.表 from '用户'@'IP地址'
+
+PS：用户权限相关数据保存在mysql数据库的user表中，所以也可以直接对其进行操作（不建议）
+授权数据库
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Name: 'SHOW'
+Description:
+SHOW has many forms that provide information about databases, tables,
+columns, or status information about the server. This section describes
+those following:
+
+
+SHOW {BINARY | MASTER} LOGS
+SHOW BINLOG EVENTS [IN 'log_name'] [FROM pos] [LIMIT [offset,] row_count]
+SHOW CHARACTER SET [like_or_where]
+SHOW COLLATION [like_or_where]
+SHOW [FULL] COLUMNS FROM tbl_name [FROM db_name] [like_or_where]
+SHOW CREATE DATABASE db_name
+SHOW CREATE EVENT event_name
+SHOW CREATE FUNCTION func_name
+SHOW CREATE PROCEDURE proc_name
+SHOW CREATE TABLE tbl_name
+SHOW CREATE TRIGGER trigger_name
+SHOW CREATE VIEW view_name
+SHOW DATABASES [like_or_where]
+SHOW ENGINE engine_name {STATUS | MUTEX}
+SHOW [STORAGE] ENGINES
+SHOW ERRORS [LIMIT [offset,] row_count]
+SHOW EVENTS
+SHOW FUNCTION CODE func_name
+SHOW FUNCTION STATUS [like_or_where]
+SHOW GRANTS FOR user
+SHOW INDEX FROM tbl_name [FROM db_name]
+SHOW MASTER STATUS
+SHOW OPEN TABLES [FROM db_name] [like_or_where]
+SHOW PLUGINS
+SHOW PROCEDURE CODE proc_name
+SHOW PROCEDURE STATUS [like_or_where]
+SHOW PRIVILEGES
+SHOW [FULL] PROCESSLIST
+SHOW PROFILE [types] [FOR QUERY n] [OFFSET n] [LIMIT n]
+SHOW PROFILES
+SHOW RELAYLOG EVENTS [IN 'log_name'] [FROM pos] [LIMIT [offset,] row_count]
+SHOW SLAVE HOSTS
+SHOW SLAVE STATUS [FOR CHANNEL channel]
+SHOW [GLOBAL | SESSION] STATUS [like_or_where]
+SHOW TABLE STATUS [FROM db_name] [like_or_where]
+SHOW [FULL] TABLES [FROM db_name] [like_or_where]
+SHOW TRIGGERS [FROM db_name] [like_or_where]
+SHOW [GLOBAL | SESSION] VARIABLES [like_or_where]
+SHOW WARNINGS [LIMIT [offset,] row_count]
+
+like_or_where:
+    LIKE 'pattern'
+  | WHERE expr
+
+If the syntax for a given SHOW statement includes a LIKE 'pattern'
+part, 'pattern' is a string that can contain the SQL % and _ wildcard
+characters. The pattern is useful for restricting statement output to
+matching values.
+
+Several SHOW statements also accept a WHERE clause that provides more
+flexibility in specifying which rows to display. See
+http://dev.mysql.com/doc/refman/5.7/en/extended-show.html.
+
+URL: http://dev.mysql.com/doc/refman/5.7/en/show.html
+
+MySQL中有很多的基本命令，show命令也是其中之一，在很多使用者中对show命令的使用还容易产生混淆，本文汇集了show命令的众多用法。 
+1. show tables或show tables from database_name; -- 显示当前数据库中所有表的名称。 
+2. show databases; -- 显示mysql中所有数据库的名称。 
+3. show columns from table_name from database_name; 或show columns from database_name.table_name; -- 显示表中列名称。 
+4. show grants for user_name; -- 显示一个用户的权限，显示结果类似于grant 命令。 
+5. show index from table_name; -- 显示表的索引。 
+6. show status; -- 显示一些系统特定资源的信息，例如，正在运行的线程数量。 
+7. show variables; -- 显示系统变量的名称和值。 
+8. show processlist; -- 显示系统中正在运行的所有进程，也就是当前正在执行的查询。大多数用户可以查看他们自己的进程，但是如果他们拥有process权限，就可以查看所有人的进程，包括密码。 
+9. show table status; -- 显示当前使用或者指定的database中的每个表的信息。信息包括表类型和表的最新更新时间。 
+10. show privileges; -- 显示服务器所支持的不同权限。 
+11. show create database database_name; -- 显示create database 语句是否能够创建指定的数据库。 
+12. show create table table_name; -- 显示create database 语句是否能够创建指定的数据库。 
+13. show engines; -- 显示安装以后可用的存储引擎和默认引擎。 
+14. show innodb status; -- 显示innoDB存储引擎的状态。 
+15. show logs; -- 显示BDB存储引擎的日志。 
+16. show warnings; -- 显示最后一个执行的语句所产生的错误、警告和通知。 
+17. show errors; -- 只显示最后一个执行语句所产生的错误。 
+18. show [storage] engines; --显示安装后的可用存储引擎和默认引擎。
