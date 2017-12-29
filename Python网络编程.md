@@ -17,43 +17,20 @@
         recv()
         send()
 
+- 需要异常处理的地方：
+    - 客户端
+        - connect
+## 心跳包
 
 
+
+
+#
         In [193]: udp_sock = socket(AF_INET, SOCK_DGRAM)
 
         In [194]: dir(udp_sock)
         Out[194]:
-        ['__class__',
-         '__del__',
-         '__delattr__',
-         '__dir__',
-         '__doc__',
-         '__enter__',
-         '__eq__',
-         '__exit__',
-         '__format__',
-         '__ge__',
-         '__getattribute__',
-         '__getstate__',
-         '__gt__',
-         '__hash__',
-         '__init__',
-         '__init_subclass__',
-         '__le__',
-         '__lt__',
-         '__module__',
-         '__ne__',
-         '__new__',
-         '__reduce__',
-         '__reduce_ex__',
-         '__repr__',
-         '__setattr__',
-         '__sizeof__',
-         '__slots__',
-         '__str__',
-         '__subclasshook__',
-         '__weakref__',
-         '_accept',
+        ['_accept',
          '_check_sendfile_params',
          '_closed',
          '_decref_socketios',
