@@ -60,7 +60,7 @@ mysql –h 主机名 –u 用户名 –p 用户密码          连接MySQL服务
 　　　　show databases
 
 切换数据库
-　　　　use databas 123123 ###用户授权
+　　　　use database 123123 ###用户授权
 
 创建用户
 　　　　create user '用户名'@'IP地址' identified by '密码';
