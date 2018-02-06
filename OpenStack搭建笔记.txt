@@ -80,7 +80,7 @@ compute2 节点：	192.168.68.11
 
 二、搭建Mariadb
 1. 安装mariadb数据库
-# yum install -y MariaDB-server MariaDB-client 
+# yum install -y mariadb-server mariadb-client 
 
 2. 配置mariadb
 vim /etc/my.cnf.d/mariadb-openstack.cnf
