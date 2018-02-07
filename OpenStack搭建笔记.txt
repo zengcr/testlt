@@ -22,10 +22,12 @@ wget -t 0 -c -r -np -nH -L -p --no-check-certificate http://mirrors.ustc.edu.cn/
 注意：此页面中如下两条命令有错误，实际修改文件路径地址为/etc/yum.repos.d/mariadb.repo
 sudo sed -i 's#yum\.mariadb\.org#mirrors.ustc.edu.cn/mariadb/yum#' /etc/yum.repos.d/mariadb
 sudo sed -i 's#http://mirrors\.ustc\.edu\.cn#https://mirrors.ustc.edu.cn#g' /etc/yum.repos.d/mariadb
+正确命令为:
+sudo sed -i 's#yum\.mariadb\.org#mirrors.ustc.edu.cn/mariadb/yum#' /etc/yum.repos.d/mariadb.repo
+sudo sed -i 's#http://mirrors\.ustc\.edu\.cn#https://mirrors.ustc.edu.cn#g' /etc/yum.repos.d/mariadb.repo
 
 yum源配置完成后，执行以下命令
-yum clean all
-yum makecache
+yum clean all; yum makecache
 
 
 # 环境准备:
