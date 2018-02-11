@@ -12,9 +12,9 @@
 	1 socket.error
 	import socket
 	try:
-	s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+		s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 	except socket.error,e:
-	print 'Strange error creating socket:%s' %e
+		print 'Strange error creating socket:%s' %e
 	创建套接字，接收发送信息数据时候的异常一般由socket.error来处理 
 
 	2 scoket.gaierror 错误
@@ -31,9 +31,9 @@
 	import socket,sys
 	s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 	try:
-	s.connect(('wang',71625))
+		s.connect(('wang',71625))
 	except socket.gaierror,e:
-	print 'Error connecting to server: %s' % e
+		print 'Error connecting to server: %s' % e
 	结果为：
 	>>>
 	Error connecting to server: (11001, 'getaddrinfo failed')

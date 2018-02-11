@@ -87,7 +87,12 @@ PS：用户权限相关数据保存在mysql数据库的user表中，所以也可
 授权数据库
 
 
-
+查看数据库中某张表有多少条数据：
+	select count(*) from test;
+	
+查询某个数据库的所有表和表中有多少行：
+	use information_schema; 
+	select table_name,table_rows from tables where TABLE_SCHEMA = 'databaseName' order by table_rows desc;  
 
 
 
