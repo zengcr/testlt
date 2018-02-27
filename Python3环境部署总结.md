@@ -9,8 +9,7 @@
 		yum install net-tools wget vim bash-completion gcc -y
 - 安装python3.6可能使用的依赖
 
-		yum install openssl-devel bzip2-devel expat-devel gdbm-devel readline-devel sqlite-devel -y
-		yum -y  install  zlib*
+		yum install openssl-devel bzip2-devel expat-devel gdbm-devel readline-devel sqlite-devel zlib* -y
 
 - 准备工作
 
@@ -50,17 +49,19 @@
 			# 清除 cache
 			$ sudo yum clean all
 			# 通过这种方式貌似只能安装 pip2，想要安装 Python3的 pip，可以通过以下的源代码安装方式。
-	- 源码安装pip3
+	- 源码安装pip3 (Python3.6.0版本安装完成后pip3已自动安装，本步骤可以省略)
 			
 			# 下载源代码
 			$ wget --no-check-certificate https://github.com/pypa/pip/archive/9.0.1.tar.gz
-			$ tar -zxvf 9.0.1 -C pip-9.0.1    # 解压文件
+			$ tar -zxvf 9.0.1.tar.gz    # 解压文件
 			$ cd pip-9.0.1
 			# 使用 Python 3 安装
 			$ python3 setup.py install
 	- 创建软链接
 	
 			$ sudo ln -s /usr/local/python3/bin/pip /usr/bin/pip3
+			注意：Python3.6.0版本安装完成后pip3已自动安装，此时创建软链接的方式如下：
+			ln -s /usr/local/python3/bin/pip3 /usr/bin/pip3
 	- 升级
 	
 			# 升级pip3			
@@ -106,7 +107,9 @@
 		grant all privileges on *.* to 'metadata'@'%' identified by 'anyun100'; 
 		# 刷新mysql用户权限相关表
 		flush privileges ;
-		# 注意：新创建用户后要分配权限；如果授权后失败，检查防火墙的状态
+		# 注意：新创建用户后要分配权限；如果授权后失败，检查防火墙的状态；
+		生产环境中的使用的database也要创建
+		例如： create database metadata;
 		
 		常用操作
 		# 查看用户情况
@@ -120,8 +123,9 @@
 ## 配置部署环境
 - 创建用户及密码
 
-		useradd metadata
-		passwd anyun100
+		以root用户登陆
+		useradd metadata  # 新增metadata用户
+		passwd metadata	  # 给metadata用户设置密码为：anyun100
 - 设置环境变量PYTHONPATH
 
 		# 假定以root用户权限部署
