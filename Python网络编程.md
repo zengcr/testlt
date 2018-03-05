@@ -156,3 +156,11 @@
 1. 客户端请求一次成功后，服务器一直处于获取客户端的死循环中
 2. 客户端请求一次，服务器端获取一次信息    
 3. 单线程的客户端与服务器实现长连接（一直有数据进行通信）    
+
+#### 查阅博客的一些结论（待验证）
+- sokcet默认是阻塞的，recv()也是阻塞的，但是当客户端端开连接后，recv()变为非阻塞的，并返回空的字符串
+
+[http://blog.csdn.net/bbg221/article/details/78464051#insertcode](http://blog.csdn.net/bbg221/article/details/78464051#insertcode "python socket.recv() 一直不停的返回空字符串，客户端怎么判断连接被断开？")
+[http://blog.csdn.net/xhw88398569/article/details/47102187](http://blog.csdn.net/xhw88398569/article/details/47102187 "python recv在连接断开后会变为非阻塞")
+[http://blog.csdn.net/huithe/article/details/5223785](http://blog.csdn.net/huithe/article/details/5223785 "关于 socket.recv 阻塞问题")
+[http://blog.csdn.net/flying881114/article/details/4850666](http://blog.csdn.net/flying881114/article/details/4850666 "socket编程 recv()返回值处理")
