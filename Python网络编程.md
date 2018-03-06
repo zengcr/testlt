@@ -164,3 +164,6 @@
 [http://blog.csdn.net/xhw88398569/article/details/47102187](http://blog.csdn.net/xhw88398569/article/details/47102187 "python recv在连接断开后会变为非阻塞")
 [http://blog.csdn.net/huithe/article/details/5223785](http://blog.csdn.net/huithe/article/details/5223785 "关于 socket.recv 阻塞问题")
 [http://blog.csdn.net/flying881114/article/details/4850666](http://blog.csdn.net/flying881114/article/details/4850666 "socket编程 recv()返回值处理")
+[http://blog.csdn.net/qq_26399665/article/details/52422865](http://blog.csdn.net/qq_26399665/article/details/52422865 "Socket send函数和recv函数详解")
+
+- 每个UDP socket都有一个接收缓冲区，没有发送缓冲区，从概念上来说就是只要有数据就发，不管对方是否可以正确接收，所以不缓冲，不需要发送缓冲区。
