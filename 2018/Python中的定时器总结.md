@@ -48,6 +48,6 @@
 		    print('Hello timer')
 		
 		while True:
-		    timer = threading.Timer(5, print_timer) 在循环中启动定时器
+		    timer = threading.Timer(5, print_timer) 	# 在循环中启动定时器
 		    timer.start()
 		    timer.join()
