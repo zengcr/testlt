@@ -167,3 +167,23 @@
 [http://blog.csdn.net/qq_26399665/article/details/52422865](http://blog.csdn.net/qq_26399665/article/details/52422865 "Socket send函数和recv函数详解")
 
 - 每个UDP socket都有一个接收缓冲区，没有发送缓冲区，从概念上来说就是只要有数据就发，不管对方是否可以正确接收，所以不缓冲，不需要发送缓冲区。
+
+
+## 问题汇总：
+1. selectors模块中`EVENT_READ` 和`EVENT_WRITE`的区别及使用场景？
+	- 作为客户端，如何使用selectors模块？
+
+
+			sock.setblocking(False)
+			sel = selectors.DefaultSelector()
+	        sel.register(listener, selectors.EVENT_READ, self.accept)	# 此处将listener注册至sel，是表示listener创建完成了就调用accept，还是其他的意思？
+			sel.register(conn, selectors.EVENT_READ, self.read)	# 此处将conn注册至sel，是表示conn创建完成了就调用read,还是说内核检测到有数据了就调用read呢？
+
+			网上文档描述：
+			当用户进程调用了select，那么整个进程会被block，而同时，kernel会“监视”所有select负责的socket，当任何一个socket中的数据准备好了，select就会返回。这个时候用户进程再调用read操作，将数据从kernel拷贝到用户进程。
+
+
+2. 多进程多线程的数据库读写解决方案？
+
+3. 网络编程，作为客户端，在一个进程中发查询消息，在另外一个进程中启动线程接收返回消息，是接收不到返回消息的。如何解决这样的问题？
+	- 目前最笨的解决方法：在每一个进程中都启动一个线程接收消息
