@@ -161,9 +161,13 @@
 - sokcet默认是阻塞的，recv()也是阻塞的，但是当客户端端开连接后，recv()变为非阻塞的，并返回空的字符串
 
 [http://blog.csdn.net/bbg221/article/details/78464051#insertcode](http://blog.csdn.net/bbg221/article/details/78464051#insertcode "python socket.recv() 一直不停的返回空字符串，客户端怎么判断连接被断开？")
+
 [http://blog.csdn.net/xhw88398569/article/details/47102187](http://blog.csdn.net/xhw88398569/article/details/47102187 "python recv在连接断开后会变为非阻塞")
+
 [http://blog.csdn.net/huithe/article/details/5223785](http://blog.csdn.net/huithe/article/details/5223785 "关于 socket.recv 阻塞问题")
+
 [http://blog.csdn.net/flying881114/article/details/4850666](http://blog.csdn.net/flying881114/article/details/4850666 "socket编程 recv()返回值处理")
+
 [http://blog.csdn.net/qq_26399665/article/details/52422865](http://blog.csdn.net/qq_26399665/article/details/52422865 "Socket send函数和recv函数详解")
 
 - 每个UDP socket都有一个接收缓冲区，没有发送缓冲区，从概念上来说就是只要有数据就发，不管对方是否可以正确接收，所以不缓冲，不需要发送缓冲区。
@@ -180,6 +184,7 @@
 			sel.register(conn, selectors.EVENT_READ, self.read)	# 此处将conn注册至sel，是表示conn创建完成了就调用read,还是说内核检测到有数据了就调用read呢？
 
 			网上文档描述：
+            I/O多路复用就是通过一种机制使一个进程可以监视多个描述符，一旦某个描述符就绪（一般是读就绪或者写就绪），能够通知程序进行相应的读写操作。
 			当用户进程调用了select，那么整个进程会被block，而同时，kernel会“监视”所有select负责的socket，当任何一个socket中的数据准备好了，select就会返回。这个时候用户进程再调用read操作，将数据从kernel拷贝到用户进程。
 
 
