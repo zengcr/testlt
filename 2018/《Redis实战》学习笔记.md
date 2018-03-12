@@ -9,3 +9,12 @@
     - 有序集合 ZSET
 
 
+
+
+
+
+# Redis菜鸟教程
+## 安装
+- Windows和Linux安装方式不一样
+	- Windows安装方式参考菜鸟教程
+	- Linux安装方式参考官网
