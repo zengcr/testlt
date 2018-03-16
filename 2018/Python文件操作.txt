@@ -1,0 +1,57 @@
+>>> help(open)
+Help on built-in function open in module io:
+
+open(file, mode='r', buffering=-1, encoding=None, errors=None, newline=None, closefd=True, opener=None)
+    Open file and return a stream.  Raise IOError upon failure.
+
+    ========= ===============================================================
+    Character Meaning
+    --------- ---------------------------------------------------------------
+    'r'       open for reading (default)
+    'w'       open for writing, truncating the file first
+    'x'       create a new file and open it for writing
+    'a'       open for writing, appending to the end of the file if it exists
+    'b'       binary mode
+    't'       text mode (default)
+    '+'       open a disk file for updating (reading and writing)
+    'U'       universal newline mode (deprecated)
+    ========= ===============================================================
+	
+	
+	
+>>> fd = open('test.txt', 'a+')
+>>> pprint(dir(fd))
+'fileno',
+'name',			# test.txt
+
+'read',
+'readline',
+'readlines',
+'readable',
+
+'write',
+'writelines'
+'writable',
+
+'seek',
+'seekable',
+'tell',
+'flush',
+
+'_CHUNK_SIZE',
+'_checkClosed',
+'_checkReadable',
+'_checkSeekable',
+'_checkWritable',
+'_finalizing',
+'buffer',
+'close',
+'closed',
+'detach',
+'encoding',
+'errors',
+'isatty',
+'line_buffering',
+'mode',
+'newlines',
+'truncate',
