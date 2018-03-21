@@ -1,8 +1,9 @@
 Usage: redis-cli [OPTIONS] [cmd [arg [arg ...]]]
   -h <hostname>      Server hostname (default: 127.0.0.1).
   -p <port>          Server port (default: 6379).
-  -s <socket>        Server socket (overrides hostname and port).
   -a <password>      Password to use when connecting to the server.
+  
+  -s <socket>        Server socket (overrides hostname and port).
   
   -r <repeat>        Execute specified command N times.
   -i <interval>      When -r is used, waits <interval> seconds per command.
@@ -54,3 +55,6 @@ Examples:
 When no command is given, redis-cli starts in interactive mode.
 Type "help" in interactive mode for information on available commands
 and settings.
+
+连接到远程服务器：
+$ redis-cli -h host -p port -a password
