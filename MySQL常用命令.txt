@@ -92,8 +92,16 @@ PS：用户权限相关数据保存在mysql数据库的user表中，所以也可
 	
 查询某个数据库的所有表和表中有多少行：
 	use information_schema; 
-	select table_name,table_rows from tables where TABLE_SCHEMA = 'databaseName' order by table_rows desc;  
+	select table_name,table_rows from tables where TABLE_SCHEMA = 'databaseName' order by table_rows desc; 
+	
+更新表中的某个字段：
+	update table_name		# 更新的表
+	set column_name=value	# 列名和新值
+	where column_name=value	# 确定要更新的过滤条件
 
+删除表中的某行：
+	delete from table_name	# 指定删除数据的表名
+	where column_name=value	# 过滤要删除的行
 
 
 
