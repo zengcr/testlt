@@ -68,7 +68,14 @@
 
 
 
+### 常见问题：
+1. flask 如何获取全部 GET 查询字符串参数？
+[https://segmentfault.com/q/1010000000449384](https://segmentfault.com/q/1010000000449384 "flask 如何获取全部 GET 查询参数？")
 
+		# 获取一条参数
+		request.args.get('abc')
+		# 获取所有参数
+		request.args.items().__str__()
 
 
 
