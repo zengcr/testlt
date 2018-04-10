@@ -1,0 +1,38 @@
+print(3%6.)
+print('1' + '0.1')
+
+len(hex(3))
+hex(int('210', 8))
+
+
+a = ['a', 'b']
+b = ['c', 'd']
+dict([a, b])
+
+max([3, 5, 7, 9])
+max(['3', '5', '7', '9'])
+
+max([3, 5, 7, 11])
+max(['3', '5', '7', '11'])
+
+
+def add():
+    return [lambda x: x+i for i in range(3) ]
+print([m(2) for m in add()])
+
+
+def func(value, L=[]):
+    L.append(value)
+    return L
+
+a = func('a')
+b = func('b', [])
+c = func('c')
+print(a, b, c)
+
+a = [3, 5, 7]
+a[1:1] = [9]
+a[:2:] = [11]
+print(a)
+
+'3'.join('123'.partition('2'))
