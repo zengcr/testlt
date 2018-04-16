@@ -8,6 +8,11 @@
         Flask-Migrate
         Flask-Email
         Flask-Login
+		Flask-Pagedown
+		markdown
+		bleach
+		faker
+		Flask-HTTPAuth
 
 - 常用概念：
    - 程序上下文
