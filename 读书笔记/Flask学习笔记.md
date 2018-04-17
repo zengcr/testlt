@@ -13,6 +13,7 @@
 		bleach
 		faker
 		Flask-HTTPAuth
+		Flask-Restful
 
 - 常用概念：
    - 程序上下文
