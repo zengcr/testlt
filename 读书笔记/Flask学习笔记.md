@@ -15,6 +15,14 @@
 		Flask-HTTPAuth
 		Flask-Restful
 
+		flask-openid
+		sqlalchemy-migrate
+		flask-whooshsqlalchemy
+		guess-language
+		flipflop
+		coverage
+		passlib
+
 - 常用概念：
    - 程序上下文
    - 请求上下文
