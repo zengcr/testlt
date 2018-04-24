@@ -41,10 +41,10 @@
 	- Object：对象
 	- Array：数组：元素可以为不同的类型
 	- Function：函数
-	
 - 运算符
-- 函数的实例属性和类属性
-	- JavaScript中的实例对象不能访问类属性
+- 函数的实例属性和类属性：JavaScript中的实例对象不能访问类属性
+	- 在函数中以this前缀修饰的变量
+	- 在函数中以函数名前缀修饰的变量
 
 ## 三、菜鸟教程
 - 输出方式
@@ -64,3 +64,8 @@
 7. Data Persistence(持久化) 数据持久化，数据存储 cookie、HTML5中的sessionStorage
 ![](https://i.imgur.com/JZoUwVt.png)
 ![](https://i.imgur.com/QJaCuHM.png)
+
+## 内建方法
+
+		isNaN()
+		hasOwnProperty()
