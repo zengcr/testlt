@@ -64,6 +64,7 @@
 7. Data Persistence(持久化) 数据持久化，数据存储 cookie、HTML5中的sessionStorage
 ![](https://i.imgur.com/JZoUwVt.png)
 ![](https://i.imgur.com/QJaCuHM.png)
+![](https://i.imgur.com/V9XE602.png)
 
 ## 内建方法
 
