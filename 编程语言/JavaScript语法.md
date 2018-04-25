@@ -45,6 +45,9 @@
 - 函数的实例属性和类属性：JavaScript中的实例对象不能访问类属性
 	- 在函数中以this前缀修饰的变量
 	- 在函数中以函数名前缀修饰的变量
+- DOM编程
+	- Notification类
+	- Geolocation类
 
 ## 三、菜鸟教程
 - 输出方式
