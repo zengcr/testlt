@@ -1,5 +1,6 @@
 # Java语法
 
+## 一、菜鸟教程
 1. 如何理解`final`修饰符，其与C语言中的`const`有何区别？
     - C语言中被`const`修饰的标识符为常量，通常大写，放在只读存储区中，其值是不能修改的。
     - Java中被`final`修饰的标识符变量是放在内存中什么区域的？  
@@ -107,3 +108,33 @@
         2. 抽象类中的成员变量可以是各种类型的，而接口中的成员变量只能是 public static final 类型的。
         3. 接口中不能含有静态代码块以及静态方法(用 static 修饰的方法)，而抽象类是可以有静态代码块和静态方法。
         4. 一个类只能继承一个抽象类，而一个类却可以实现多个接口。
+
+## 二、疯狂Java讲义
+### 第3章
+- 数据类型分类
+	- 基本类型
+	- 引用类型
+
+### 第5章 面向对象（上）
+- 类的生命周期：
+	- 类加载——类验证——类准备——类解析——类初始化
+
+## Windows和Linux下设置环境变量
+- Windows
+	- 图形界面
+	- 命令行：临时生效
+
+			path=%path%;C:\Python
+
+- Linux
+	- 修改文件：家目录下的.bash_profile 或.bashrc文件
+		
+			新增
+			path=$PATH:/usr/local/bin/python
+			export PATH
+			重新登陆或使用命令 source ./.bash_profile
+
+	- 命令行：临时生效
+
+			PATH="$PATH:/usr/local/bin/python"(不要双引号也可以)
+			export PATH
