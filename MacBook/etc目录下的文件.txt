@@ -1,0 +1,98 @@
+-r--r--r--   1 root  wheel     189  7 16  2017 profile
+-rw-r--r--   1 root  wheel      45 10  3  2017 paths
+-r--r--r--   1 root  wheel     265  7 16  2017 bashrc
+
+-rw-r--r--   1 root  wheel     213 10  3  2017 hosts
+-rw-r--r--   1 root  wheel    2769 10  3  2017 group
+-rw-r--r--   1 root  wheel    6774 10  3  2017 passwd
+-rw-r--r--   1 root  wheel      53 10  3  2017 networks
+-rw-r--r--   1 root  wheel  677972 10  3  2017 services
+-r--r-----   1 root  wheel    1563  7 16  2017 sudoers
+
+-rw-r--r--   1 root  wheel       0 10  3  2017 hosts.equiv
+drwxr-xr-x   2 root  wheel      64 10  3  2017 paths.d
+drwxr-xr-x   2 root  wheel      64  7 16  2017 sudoers.d
+
+
+-rw-r--r--   1 root  wheel     189  7 16  2017 csh.cshrc
+-rw-r--r--   1 root  wheel     121  7 16  2017 csh.login
+-rw-r--r--   1 root  wheel      39  7 16  2017 csh.logout
+
+
+
+-rw-r--r--   1 root  wheel     515 10  3  2017 afpovertcp.cfg
+lrwxr-xr-x   1 root  wheel      15  1 19 19:17 aliases -> postfix/aliases
+-rw-r-----   1 root  wheel   16384  7 26  2017 aliases.db
+drwxr-xr-x  10 root  wheel     320  5  9 22:55 apache2
+drwxr-xr-x  28 root  wheel     896  1 19 15:35 asl
+-rw-r--r--   1 root  wheel    1051  7 22  2017 asl.conf
+-rw-r--r--   1 root  wheel     149 12 18 01:26 auto_home
+-rw-r--r--   1 root  wheel     194 12 18 01:26 auto_master
+-rw-r--r--   1 root  wheel    1935 12 18 01:26 autofs.conf
+-rw-r--r--   1 root  wheel    9192 10 11  2017 bashrc_Apple_Terminal
+-rw-r--r--   1 root  wheel      82  1 19 12:14 com.apple.screensharing.agent.launchd
+drwxr-xr-x  10 root  _lp       320 12 11 08:16 cups
+drwxr-xr-x   3 root  wheel      96  7 16  2017 defaults
+-rw-r--r--   1 root  wheel    2378  2 16 08:20 dnsextd.conf
+drwxr-xr-x   4 root  wheel     128  7 16  2017 emond.d
+-rw-r--r--   1 root  wheel       0 10  3  2017 find.codes
+-rw-r--r--   1 root  wheel     150 10  3  2017 fstab.hd
+-rw-r--r--   1 root  wheel     119 10  3  2017 ftpusers
+-rw-r--r--   1 root  wheel    5678 10  3  2017 gettytab
+-r--r--r--   1 root  wheel    1299  7 16  2017 irbrc
+-rw-r--r--   1 root  wheel       0 10  3  2017 kern_loader.conf
+-rw-------   1 root  wheel    1946  5  9 22:57 krb5.keytab
+lrwxr-xr-x   1 root  wheel      39  5  9 22:58 localtime -> /var/db/timezone/zoneinfo/Asia/Shanghai
+-rw-r--r--   1 root  wheel     621  7 16  2017 locate.rc
+-rw-r--r--   1 root  wheel     106  7 29  2017 mail.rc
+-rw-------   1 root  wheel    7264 10  3  2017 master.passwd
+-rw-r--r--   1 root  wheel      11  7 16  2017 nanorc
+-rw-r--r--   1 root  wheel    1318  7 16  2017 newsyslog.conf
+drwxr-xr-x   7 root  wheel     224  1 19 15:35 newsyslog.d
+-rw-r--r--   1 root  wheel      43 10 10  2017 nfs.conf
+-rw-r--r--   1 root  wheel     351  7 16  2017 notify.conf
+-rw-r--r--   1 root  wheel     414  7 16  2017 ntp-restrict.conf
+-rw-r--r--@  1 root  wheel      27  5  8 22:57 ntp.conf
+-rw-r--r--   1 root  wheel      23 11 29 12:00 ntp_opendirectory.conf
+drwxr-xr-x   8 root  wheel     256  1 19 15:33 openldap
+drwxr-xr-x  22 root  wheel     704  1 19 15:36 pam.d
+drwxr-xr-x   5 root  wheel     160  7 16  2017 periodic
+drwxr-xr-x  23 root  wheel     736  7 26  2017 postfix
+drwxr-xr-x   2 root  wheel      64 12 18 01:26 ppp
+-rw-r--r--   1 root  wheel    6393 10  3  2017 protocols
+drwxr-xr-x   4 root  wheel     128  7 16  2017 racoon
+-rw-r--r--   1 root  wheel    1560 11  1  2017 rc.common
+-rw-r--r--   1 root  wheel    5264  9 27  2017 rc.netboot
+lrwxr-xr-x   1 root  wheel      22  1 19 19:17 resolv.conf -> ../var/run/resolv.conf
+-rw-r--r--   1 root  wheel       0 10  3  2017 rmtab
+-rw-r--r--   1 root  wheel    1735 10  3  2017 rpc
+-rw-r--r--   1 root  wheel     891 12 18 01:26 rtadvd.conf
+drwxr-xr-x   7 root  wheel     224  7 16  2017 security
+-rw-r--r--   1 root  wheel     179 10  3  2017 shells
+drwxr-xr-x   4 root  wheel     128  7 16  2017 snmp
+drwxr-xr-x   5 root  wheel     160  1 19 15:33 ssh
+drwxr-xr-x   6 root  wheel     192  7 16  2017 ssl
+-r--r-----   1 root  wheel     257  7 16  2017 sudo_lecture
+-rw-r--r--   1 root  wheel      96  7 22  2017 syslog.conf
+-rw-r--r--   1 root  wheel    1316 10  3  2017 ttys
+drwxr-xr-x   5 root  wheel     160  7 16  2017 wfs
+-rw-r--r--   1 root  wheel       0 10  3  2017 xtab
+-r--r--r--   1 root  wheel     126  7 16  2017 zprofile
+-r--r--r--   1 root  wheel     207  7 16  2017 zshrc
+
+
+drwxr-xr-x   2 root  wheel      64 11  1  2017 mach_init.d
+drwxr-xr-x   2 root  wheel      64 11  1  2017 mach_init_per_login_session.d
+drwxr-xr-x   2 root  wheel      64 11  1  2017 mach_init_per_user.d
+
+-rw-r--r--   1 root  wheel    4574  7 16  2017 man.conf
+-rw-r--r--   1 root  wheel      36 10  3  2017 manpaths
+drwxr-xr-x   2 root  wheel      64 10  3  2017 manpaths.d
+
+drwxr-xr-x   3 root  wheel      96  7 16  2017 pf.anchors
+-rw-r--r--   1 root  wheel    1027  7 16  2017 pf.conf
+-rw-r--r--   1 root  wheel   28311  7 16  2017 pf.os
+
+-rw-r--r--   1 root  wheel    4417  7 16  2017 php-fpm.conf.default
+drwxr-xr-x   3 root  wheel      96  7 16  2017 php-fpm.d
+-r--r--r--   1 root  wheel   71096  7 16  2017 php.ini.default
