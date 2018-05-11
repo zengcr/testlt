@@ -227,6 +227,7 @@ lrwxr-xr-x  1 root  wheel      63  1 19 19:17 newfs_udf -> /System/Library/Files
 
 ## /usr/bin
 不常用的
+-rwxr-xr-x   1 root   wheel     23968  3 28 12:02 xcode-select
 -rwxr-xr-x   1 root   wheel     18288  3 28 12:02 git
 -rwxr-xr-x   1 root   wheel     18320  3 28 12:03 git-cvsserver
 -rwxr-xr-x   1 root   wheel     18320  3 28 12:03 git-receive-pack
@@ -265,6 +266,28 @@ lrwxr-xr-x   1 root   wheel        82  1 19 19:17 python2.7-config -> ../../Syst
 lrwxr-xr-x   1 root   wheel        76  1 19 19:17 pythonw2.7 -> ../../System/Library/Frameworks/Python.framework/Versions/2.7/bin/pythonw2.7
 -rwxr-xr-x   1 root   wheel       928  7 16  2017 smtpd.py
 lrwxr-xr-x   1 root   wheel        77  1 19 19:17 smtpd2.7.py -> ../../System/Library/Frameworks/Python.framework/Versions/2.7/bin/smtpd2.7.py
+
+lrwxr-xr-x   1 root   wheel        73  1 19 19:17 jar -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/jar
+lrwxr-xr-x   1 root   wheel        79  1 19 19:17 jarsigner -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/jarsigner
+lrwxr-xr-x   1 root   wheel        74  1 19 19:17 java -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/java
+lrwxr-xr-x   1 root   wheel        75  1 19 19:17 javac -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/javac
+lrwxr-xr-x   1 root   wheel        77  1 19 19:17 javadoc -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/javadoc
+lrwxr-xr-x   1 root   wheel        75  1 19 19:17 javah -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/javah
+lrwxr-xr-x   1 root   wheel        75  1 19 19:17 javap -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/javap
+lrwxr-xr-x   1 root   wheel        82  1 19 19:17 javapackager -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/javapackager
+lrwxr-xr-x   1 root   wheel        76  1 19 19:17 javaws -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/javaws
+lrwxr-xr-x   1 root   wheel        74  1 19 19:17 jcmd -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/jcmd
+lrwxr-xr-x   1 root   wheel        78  1 19 19:17 jconsole -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/jconsole
+lrwxr-xr-x   1 root   wheel        78  1 19 19:17 jcontrol -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/jcontrol
+lrwxr-xr-x   1 root   wheel        73  1 19 19:17 jdb -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/jdb
+lrwxr-xr-x   1 root   wheel        75  1 19 19:17 jdeps -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/jdeps
+lrwxr-xr-x   1 root   wheel        74  1 19 19:17 jhat -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/jhat
+lrwxr-xr-x   1 root   wheel        75  1 19 19:17 jhsdb -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/jhsdb
+lrwxr-xr-x   1 root   wheel        76  1 19 19:17 jimage -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/jimage
+lrwxr-xr-x   1 root   wheel        75  1 19 19:17 jinfo -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/jinfo
+lrwxr-xr-x   1 root   wheel        73  1 19 19:17 jjs -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/jjs
+lrwxr-xr-x   1 root   wheel        74  1 19 19:17 jmap -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/jmap
+lrwxr-xr-x   1 root   wheel        73  1 19 19:17 jmc -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/jmc
 
 -rwxr-xr-x   1 root   wheel     55072  3 28 12:02 AssetCacheLocatorUtil
 -rwxr-xr-x   1 root   wheel     53472  3 28 12:02 AssetCacheManagerUtil
@@ -963,7 +986,6 @@ lrwxr-xr-x   1 root   wheel        78  1 19 19:17 wsimport -> /System/Library/Fr
 -rwxr-xr-x   1 root   wheel     24192  1 19 15:37 xargs
 -rwxr-xr-x   2 root   wheel       925  7 16  2017 xattr
 -rwxr-xr-x   1 root   wheel       432  7 16  2017 xattr-2.7
--rwxr-xr-x   1 root   wheel     23968  3 28 12:02 xcode-select
 -rwxr-xr-x   1 root   wheel     18304  3 28 12:03 xcodebuild
 -rwxr-xr-x   1 root   wheel     17952  3 28 12:03 xcrun
 -rwxr-xr-x   1 root   wheel     18304  3 28 12:02 xcscontrol
@@ -1039,28 +1061,6 @@ lrwxr-xr-x   1 root   wheel        73  1 19 19:17 xjc -> /System/Library/Framewo
 -r-xr-xr-x   1 root   wheel      6295  7 16  2017 dbiprof5.18
 -rwxr-xr-x  35 root   wheel       811  7 16  2017 dbiproxy
 -r-xr-xr-x   1 root   wheel      5479  7 16  2017 dbiproxy5.18
-
-lrwxr-xr-x   1 root   wheel        73  1 19 19:17 jar -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/jar
-lrwxr-xr-x   1 root   wheel        79  1 19 19:17 jarsigner -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/jarsigner
-lrwxr-xr-x   1 root   wheel        74  1 19 19:17 java -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/java
-lrwxr-xr-x   1 root   wheel        75  1 19 19:17 javac -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/javac
-lrwxr-xr-x   1 root   wheel        77  1 19 19:17 javadoc -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/javadoc
-lrwxr-xr-x   1 root   wheel        75  1 19 19:17 javah -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/javah
-lrwxr-xr-x   1 root   wheel        75  1 19 19:17 javap -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/javap
-lrwxr-xr-x   1 root   wheel        82  1 19 19:17 javapackager -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/javapackager
-lrwxr-xr-x   1 root   wheel        76  1 19 19:17 javaws -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/javaws
-lrwxr-xr-x   1 root   wheel        74  1 19 19:17 jcmd -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/jcmd
-lrwxr-xr-x   1 root   wheel        78  1 19 19:17 jconsole -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/jconsole
-lrwxr-xr-x   1 root   wheel        78  1 19 19:17 jcontrol -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/jcontrol
-lrwxr-xr-x   1 root   wheel        73  1 19 19:17 jdb -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/jdb
-lrwxr-xr-x   1 root   wheel        75  1 19 19:17 jdeps -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/jdeps
-lrwxr-xr-x   1 root   wheel        74  1 19 19:17 jhat -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/jhat
-lrwxr-xr-x   1 root   wheel        75  1 19 19:17 jhsdb -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/jhsdb
-lrwxr-xr-x   1 root   wheel        76  1 19 19:17 jimage -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/jimage
-lrwxr-xr-x   1 root   wheel        75  1 19 19:17 jinfo -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/jinfo
-lrwxr-xr-x   1 root   wheel        73  1 19 19:17 jjs -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/jjs
-lrwxr-xr-x   1 root   wheel        74  1 19 19:17 jmap -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/jmap
-lrwxr-xr-x   1 root   wheel        73  1 19 19:17 jmc -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/jmc
 
 -rwxr-xr-x   1 root   wheel     18272  3 28 12:02 ld
 lrwxr-xr-x   1 root   wheel        10  1 19 19:17 ldapadd -> ldapmodify
@@ -1366,3 +1366,244 @@ lrwxr-xr-x  1 root   wheel            59  1 19 19:17 sndiskmove -> /System/Libra
 -rwxr-xr-x  1 root   wheel        124240  3 28 12:02 systemsetup
 -rwxr-xr-x  1 root   wheel        399600  3 28 12:03 systemsoundserverd
 -rwxr-xr-x  1 root   wheel       1574656  3 28 12:02 systemstats
+
+
+
+## /usr/libexec
+drwxr-xr-x    3 root  wheel       96  7 16  2017 emacs
+lrwxr-xr-x    1 root  wheel       79  1 19 19:17 java_home -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/java_home
+-r-xr-xr-x    1 root  wheel    24752  4 18 16:30 kdumpd
+
+
+-rwxr-xr-x    1 root  wheel    32304  3 28 12:02 AirPlayXPCHelper
+drwxr-xr-x    5 root  wheel      160  5  9 22:54 AppSandbox
+drwxr-xr-x    7 root  wheel      224  5  9 23:24 ApplicationFirewall
+drwxr-xr-x    4 root  wheel      128  5  9 22:54 AssetCache
+drwxr-xr-x   38 root  wheel     1216  5  9 22:54 AssetCacheAgent
+-rwxr-xr-x    1 root  wheel    32576  3 28 12:03 DataDetectorsLocalSources
+-rwxr-xr-x    1 root  wheel    25008  1 19 15:37 DataDetectorsSourceAccess
+drwxr-xr-x    3 root  wheel       96  5  9 22:54 DeveloperTools
+-rwxr-xr-x    1 root  wheel    30592  3 28 12:02 FDERecoveryAgent
+-rwxr-xr-x    1 root  wheel    37520  3 28 12:02 FirmwareUpdateLauncher
+-rwxr-xr-x    1 root  wheel    30160  3 28 12:03 IOAccelMemoryInfoCollector
+-r-xr-xr-x    1 root  wheel   185008  3 28 12:02 InternetSharing
+-rwxr-xr-x    1 root  wheel    50512  3 28 12:02 KeychainMigrator
+drwxr-xr-x    3 root  wheel       96  5  9 23:25 MiniTerm.app
+-rwxr-xr-x    1 root  wheel    30176  3 28 12:02 NVMeAgent
+-rwxr-xr-x    1 root  wheel    41152  3 28 12:02 PlistBuddy
+lrwxr-xr-x    1 root  wheel       92  1 19 19:17 SafariCloudHistoryPushAgent -> /System/Library/CoreServices/SafariSupport.bundle/Contents/MacOS/SafariCloudHistoryPushAgent
+lrwxr-xr-x    1 root  wheel       90  1 19 19:17 SafariHistoryServiceAgent -> /System/Library/CoreServices/SafariSupport.bundle/Contents/MacOS/SafariHistoryServiceAgent
+lrwxr-xr-x    1 root  wheel       82  1 19 19:17 SafariLaunchAgent -> /System/Library/CoreServices/SafariSupport.bundle/Contents/MacOS/SafariLaunchAgent
+lrwxr-xr-x    1 root  wheel       88  1 19 19:17 SafariNotificationAgent -> /System/Library/CoreServices/SafariSupport.bundle/Contents/MacOS/SafariNotificationAgent
+lrwxr-xr-x    1 root  wheel       91  1 19 19:17 SafariPlugInUpdateNotifier -> /System/Library/CoreServices/SafariSupport.bundle/Contents/MacOS/SafariPlugInUpdateNotifier
+drwxr-xr-x    3 root  wheel       96  7 16  2017 SmartCardServices
+-rwxr-xr-x    1 root  wheel  1179648  3 28 12:02 TouchBarServer
+-rwxr-xr-x    1 root  wheel    35920  3 28 12:02 USBAgent
+-rwxr-xr-x    1 root  wheel    36960  4 18 16:30 UserEventAgent
+-rwxr-xr-x    1 root  wheel   325824  3 28 12:03 WiFiVelocityAgent
+-rwxr-xr-x    1 root  wheel  1524192  3 28 12:02 airportd
+-rwxr-xr-x    1 root  wheel    51056  4 18 16:30 amfid
+-rwxr-xr-x    1 root  wheel    30336  1 19 15:37 amsdstat
+drwxr-xr-x  113 root  wheel     3616  5  9 22:54 apache2
+-rwxr-xr-x    1 root  wheel    68416  3 28 12:02 apfsd
+-rwxr-xr-x    1 root  wheel   243792  3 28 12:03 applessdstatistics
+-rwxr-xr-x    1 root  wheel    86336  4 18 16:30 atomicupdatetool
+-rwxr-xr-x    1 root  wheel    57536  4 18 16:30 atrun
+-r-sr-xr-x    1 root  wheel    23472  3 28 12:02 authopen
+-rwxr-xr-x    1 root  wheel    19872  4 18 16:30 autofsd
+-rwxr-xr-x    1 root  wheel   129632  4 18 16:30 automountd
+-rwxr-xr-x    1 root  wheel    54976  3 28 12:02 avconferenced
+-rwxr-xr-x    1 root  wheel   601696  3 28 12:03 awacsd
+-rwxr-xr-x    1 root  wheel    51472  3 28 12:02 biokitaggdd
+-rwxr-xr-x    1 root  wheel   700336  3 28 12:02 biometrickitd
+-rwxr-xr-x    1 root  wheel    53456  3 28 12:02 bootinstalld
+-rwxr-xr-x    1 root  wheel   182880  3 28 12:02 bootpd
+-rwxr-xr-x    1 root  wheel    31584  3 28 12:03 bspowerassertiontool
+-rwxr-xr-x    1 root  wheel    58480  3 28 12:03 captiveagent
+-rwxr-xr-x    1 root  wheel    19248  3 28 12:02 cc_fips_test
+-rwxr-xr-x    1 root  wheel     2931  7 16  2017 checkLocalKDC
+-rwxr-xr-x    1 root  wheel    57344  4 18 16:30 chkpasswd
+-rwxr-xr-x    1 root  wheel  2558560  3 28 12:03 cloudconfigurationd
+-rwxr-xr-x    1 root  wheel    99920  3 28 12:02 colorsync.displayservices
+-rwxr-xr-x    1 root  wheel    75264  3 28 12:02 colorsyncd
+-rwxr-xr-x    1 root  wheel    24240  1 19 15:37 comsat
+-rwxr-xr-x    1 root  wheel   474416  4 18 16:30 configd
+-rwxr-xr-x    1 root  wheel     3788  7 16  2017 configureLocalKDC
+-rwxr-xr-x    1 root  wheel    27408  4 18 16:30 corebrightnessd
+-rwxr-xr-x    1 root  wheel    19248  4 18 16:30 corecaptured
+-rwxr-xr-x    1 root  wheel   750720  3 28 12:03 coreduetd
+-rwxr-xr-x    1 root  wheel    67408  3 28 12:02 corestoraged
+-rwxr-xr-x    1 root  wheel    34736  3 28 12:02 corestoragehelperd
+drwxr-xr-x   10 root  wheel      320  1 19 15:35 cups
+-rwxr-xr-x    1 root  wheel    25600  3 28 12:02 dasd
+-rwxr-xr-x    1 root  wheel    47152  3 28 12:02 defragx
+-rwxr-xr-x    1 root  wheel    66240  3 28 12:02 diagnosticd
+-rwxr-xr-x    1 root  wheel    39264  4 18 16:30 dirhelper
+-rwxr-xr-x    1 root  wheel   290352  3 28 12:02 diskarbitrationd
+-rwxr-xr-x    1 root  wheel  2442864  3 28 12:02 diskmanagementd
+-rwxr-xr-x    1 root  wheel    29088  3 28 12:02 diskmanagementstartup
+-rwxr-xr-x    1 root  wheel   271344  4 18 16:30 displaypolicyd
+-rwxr-xr-x    1 root  wheel   544544  3 28 12:02 dmd
+-rwxr-xr-x    1 root  wheel    85792  3 28 12:02 dpaudiothru
+-rwxr-xr-x    1 root  wheel    65648  3 28 12:02 dpd
+-rwxr-xr-x    1 root  wheel    18656  3 28 12:03 dprivacyd
+-rwxr-xr-x    1 root  wheel   477536  3 28 12:02 dspluginhelperd
+drwxr-xr-x    7 root  wheel      224  1 19 15:36 dtrace
+-r-xr-xr-x    1 root  wheel    24272  1 19 15:37 dumpemacs
+-rwxr-xr-x    1 root  wheel    30384  1 19 15:37 efiupdater
+-rwxr-xr-x    1 root  wheel     5802  7 16  2017 emlog.pl
+-rwxr-xr-x    1 root  wheel    57184  4 18 16:30 eoshostd
+drwxr-xr-x    3 root  wheel       96 10  5  2017 fax
+drwxr-xr-x    7 root  wheel      224  5  9 22:54 feedback
+-rwxr-xr-x    1 root  wheel    28912  3 28 12:02 femail
+-rwxr-xr-x    1 root  wheel    69904  3 28 12:02 findmydevice-user-agent
+-rwxr-xr-x    1 root  wheel   703312  3 28 12:02 findmydeviced
+drwxr-xr-x    4 root  wheel      128  1 19 15:29 firmwarecheckers
+-rwxr-xr-x    1 root  wheel    47440  3 28 12:02 firmwaresyncd
+-rwxr-xr-x    1 root  wheel   485824  3 28 12:02 fmfd
+-r-xr-xr-x    1 root  wheel    45168  3 28 12:02 ftp-proxy
+-rwxr-xr-x    1 root  wheel    86928  3 28 12:02 gamecontrollerd
+-rwxr-xr-x    1 root  wheel    18800  3 28 12:02 getPPDVersion
+-rwxr-xr-x    1 root  wheel    74496  4 18 16:30 getty
+-rwxr-xr-x    1 root  wheel      356  1  2 08:22 gkreport
+-rwxr-xr-x    1 root  wheel    19520  3 28 12:03 hidd
+-rwxr-xr-x    1 root  wheel    18096  3 28 12:02 ifcstart
+-rwxr-xr-x    1 root  wheel    32992  3 28 12:02 installer-core
+-rwxr-xr-x    1 root  wheel    32096  3 28 12:02 ioupsd
+-rwxr-xr-x    1 root  wheel    62672  1 19 15:37 ippusbd
+-rwxr-xr-x    1 root  wheel    50816  3 28 12:02 kcproxy
+-rwxr-xr-x    1 root  wheel   418416  3 28 12:03 kextd
+-rwxr-xr-x    1 root  wheel   204512  3 28 12:02 keybagd
+-rwxr-xr-x    1 root  wheel    21200  3 28 12:02 keyboardservicesd
+-rwxr-xr-x    1 root  wheel    59744  3 28 12:02 knowledge-agent
+-rwxr-xr-x    1 root  wheel    42144  3 28 12:02 kuncd
+-rwxr-xr-x    1 root  wheel    53792  3 28 12:03 languageassetd
+-rwxr-xr-x    1 root  wheel    17952  1 19 15:37 locate.bigram
+-rwxr-xr-x    1 root  wheel    18480  1 19 15:37 locate.code
+-rwxr-xr-x    1 root  wheel     2350  7 16  2017 locate.concatdb
+-rwxr-xr-x    1 root  wheel     3150  7 16  2017 locate.mklocatedb
+-rwxr-xr-x    1 root  wheel     3495  7 16  2017 locate.updatedb
+-rwxr-xr-x    1 root  wheel  5199488  3 28 12:02 locationd
+-rwxr-xr-x    1 root  wheel   191904  3 28 12:02 logd
+-rwxr-xr-x    1 root  wheel    24864  3 28 12:02 loginitemregisterd
+-rwxr-xr-x    1 root  wheel    53264  3 28 12:02 logkextloadsd
+-rwxr-xr-x    1 root  wheel    19136  3 28 12:02 lsd
+-rwxr-xr-x    1 root  wheel    28576  1 19 15:37 makewhatis
+-rwxr-xr-x    1 root  wheel     2446  7 16  2017 makewhatis.local
+-rwxr-xr-x    1 root  wheel    79872  3 28 12:02 mcxalr
+-rwxr-xr-x    1 root  wheel   866464  3 28 12:02 mdmclient
+-rwxr-xr-x    1 root  wheel     1135  7 16  2017 migrateLocalKDC
+-rwxr-xr-x    1 root  wheel   487520  3 28 12:02 mobileassetd
+-rwxr-xr-x    1 root  wheel    19584  4 18 16:30 mount_url
+-rwxr-xr-x    1 root  wheel    34816  4 18 16:30 msutil
+-rwxr-xr-x    1 root  wheel    30256  4 18 16:30 multiversed
+-r-xr-xr-x    1 root  wheel    47712  3 28 12:02 natpmpd
+-rwxr-xr-x    1 root  wheel   184608  3 28 12:02 neagent
+-rwxr-xr-x    1 root  wheel   228512  3 28 12:02 nehelper
+-rwxr-xr-x    1 root  wheel   668320  3 28 12:02 nesessionmanager
+-rwxr-xr-x    1 root  wheel    37264  3 28 12:03 netbootdisk
+-rwxr-xr-x    1 root  wheel   168480  3 28 12:02 networkserviceproxy
+-rwxr-xr-x    1 root  wheel  1106304  4 18 16:30 nfcd
+-rwxr-xr-x    1 root  wheel    29936  4 18 16:30 nfrestore_service
+-rwxr-xr-x    1 root  wheel    65440  3 28 12:02 nlcd
+-rwxr-xr-x    1 root  wheel   871808  3 28 12:02 nsurlsessiond
+-rwxr-xr-x    1 root  wheel   229968  3 28 12:02 nsurlstoraged
+-r-xr-xr-x    1 root  wheel    28752  3 28 12:02 ntalkd
+-rwxr-xr-x    1 root  wheel      865  7 16  2017 ntpd-wrapper
+-rwxr-xr-x    1 root  wheel    24656  4 18 16:30 od_user_homes
+-rwxr-xr-x    1 root  wheel    44960  3 28 12:03 odproxyd
+-rwxr-xr-x    1 root  wheel   750208  3 28 12:03 opendirectoryd
+-rwxr-xr-x    1 root  wheel    18304  3 28 12:03 osaapplet
+-rwxr-xr-x    1 root  wheel    47312  3 28 12:02 otherbsd
+-rwxr-xr-x    1 root  wheel    18976  1 19 15:37 path_helper
+-rwxr-xr-x    1 root  wheel    43648  3 28 12:02 pboard
+-rwxr-xr-x    1 root  wheel   118656  3 28 12:03 pcsstatus
+-rwxr-xr-x    1 root  wheel    19232  1 19 15:37 periodic-wrapper
+-rwxr-xr-x    1 root  wheel    67248  3 28 12:03 pfd
+-rwxr-xr-x    1 root  wheel   226288  3 28 12:02 pkd
+-rwxr-xr-x    1 root  wheel    24528  3 28 12:02 pkreporter
+drwxr-xr-x   44 root  wheel     1408  5  9 22:54 postfix
+-rwxr-xr-x    1 root  wheel    19232  3 28 12:02 powerlogd
+-rwxr-xr-x    1 root  wheel   209280  3 28 12:02 productutil
+-rwxr-xr-x    1 root  wheel    25184  3 28 12:02 ptmd
+-rwxr-xr-x    1 root  wheel   244880  3 28 12:02 rapportd
+-rwxr-xr-x    1 root  wheel    44960  3 28 12:02 remotectl
+-rwxr-xr-x    1 root  wheel    19232  3 28 12:02 rootless-init
+-rwxr-xr-x    1 root  wheel    27520  3 28 12:03 routined
+-r-xr-xr-x    1 root  wheel    30240  3 28 12:02 rpc.rquotad
+-rwxr-xr-x    1 root  wheel   100336  3 28 12:02 rpcsvchost
+-rwxr-xr-x    1 root  wheel   214480  3 28 12:02 rtcreportingd
+-rwxr-xr-x    1 root  wheel   149472  4 18 16:30 sandboxd
+-rwxr-xr-x    1 root  wheel    20000  3 28 12:02 scsid
+-rwxr-xr-x    1 root  wheel    25328  3 28 12:03 sdfwupdater
+-rwxr-xr-x    1 root  wheel  2699440  4 18 16:30 secd
+-rwxr-xr-x    1 root  wheel    46912  3 28 12:02 secinitd
+-rwxr-xr-x    1 root  wheel     1635  1  2 08:32 security-checksystem
+-rwxr-xr-x    1 root  wheel    54000  4 18 16:30 security-sysdiagnose
+-rws--x--x    1 root  wheel    19120  3 28 12:02 security_authtrampoline
+-rwxr-xr-x    1 root  wheel    86512  4 18 16:30 securityd_service
+-rwxr-xr-x    1 root  wheel   108928  4 18 16:30 securityuploadd
+-rwxr-xr-x    1 root  wheel   280128  4 18 16:30 seld
+-rwxr-xr-x    1 root  wheel    94256  3 28 12:03 sftp-server
+-rwxr-xr-x    1 root  wheel  3536016  4 18 16:30 sharingd
+-rwxr-xr-x    1 root  wheel   153648  3 28 12:02 signpost_reporter
+-rwxr-xr-x    1 root  wheel    61280  3 28 12:02 silhouette
+-rwxr-xr-x    1 root  wheel   168640  3 28 12:02 siriknowledged
+-rwxr-xr-x    1 root  wheel  1841872  3 28 12:02 slapconfig-keygen
+-rwxr-xr-x    1 root  wheel  3038720  3 28 12:03 slapd
+-rwxr-xr-x    1 root  wheel    53824  3 28 12:02 smb-migrate-preferences
+-rwxr-xr-x    1 root  wheel    89456  3 28 12:02 smb-sync-preferences
+-rwxr-xr-x    1 root  wheel    45600  3 28 12:02 smcDiagnose
+-rwxr-xr-x    1 root  wheel    40736  3 28 12:02 smcupdater
+-rwxr-xr-x    1 root  wheel    53952  3 28 12:02 smd
+-rwxr-xr-x    1 root  wheel    37248  3 28 12:02 snmpd
+-rwxr-xr-x    1 root  wheel    44464  3 28 12:02 spindump_agent
+-rwxr-xr-x    1 root  wheel    25344  1 19 15:37 ssdupdater
+-rwx--x--x    1 root  wheel  1869568  3 28 12:02 ssh-keysign
+-rwxr-xr-x    1 root  wheel  1588624  3 28 12:02 ssh-pkcs11-helper
+-r-xr-xr-x    1 root  wheel      629 10 25  2017 sshd-keygen-wrapper
+-rwxr-xr-x    1 root  wheel    39792  3 28 12:02 startupdiskhelper
+-rwxr-xr-x    1 root  wheel   115648  3 28 12:02 swcd
+-rwxr-xr-x    1 root  wheel    26112  3 28 12:02 symptomsd
+-rwxr-xr-x    1 root  wheel    34880  3 28 12:02 symptomsd-diag
+-rwxr-xr-x    1 root  wheel    55824  4 18 16:30 sysdiagnose_helper
+-rwxr-xr-x    1 root  wheel    58976  3 28 12:02 sysmond
+-rwxr-xr-x    1 root  wheel   161872  3 28 12:03 syspolicyd
+-rwxr-xr-x    1 root  wheel    17856  3 28 12:02 systemstats_boot
+-rwxr-xr-x    1 root  wheel    57280  3 28 12:02 tailspind
+-rwxr-xr-x    1 root  wheel    70544  3 28 12:02 taskgated
+-rwxr-xr-x    1 root  wheel    42704  3 28 12:02 taskgated-helper
+-rwxr-xr-x    1 root  wheel   163456  3 28 12:02 testmanagerd
+-r-xr-xr-x    1 root  wheel    29792  3 28 12:02 tftpd
+-rwxr-xr-x    1 root  wheel    71120  3 28 12:02 thermald
+-rwxr-xr-x    1 root  wheel   364112  3 28 12:02 timed
+-rwxr-xr-x    1 root  wheel   466176  4 18 16:30 trustd
+-rwxr-xr-x    1 root  wheel   193904  3 28 12:02 tzd
+-rwxr-xr-x    1 root  wheel   114576  1 19 15:37 tzinit
+-rwxr-xr-x    1 root  wheel    44720  1 19 15:37 tzlinkd
+-rwxr-xr-x    1 root  wheel    27360  3 28 12:02 ucupdate
+-r-xr-xr-x    1 root  wheel   570176  4 18 16:30 unbound
+-rwxr-xr-x    1 root  wheel    20208  3 28 12:03 undoServerAppDNSPrefs
+-rwxr-xr-x    1 root  wheel      465 10 10  2017 upsshutdown
+-rwxr-xr-x    1 root  wheel    41696  3 28 12:03 usbcupdater
+-rwxr-xr-x    1 root  wheel    53424  3 28 12:02 usbd
+-rwxr-xr-x    1 root  wheel    24640  3 28 12:03 vbiosupdater
+-rwxr-xr-x    1 root  wheel    19424  3 28 12:03 videosubscriptionsd
+-r-xr-xr-x    1 root  wheel    18176  1 19 15:37 vndevice
+-rwxr-xr-x    1 root  wheel   170336  3 28 12:02 warmd
+-rwxr-xr-x    1 root  wheel    36608  3 28 12:03 warmd_agent
+-rwxr-xr-x    1 root  wheel    46256  4 18 16:30 watchdogd
+lrwxr-xr-x    1 root  wheel       78  1 19 19:17 webinspectord -> /System/Library/CoreServices/SafariSupport.bundle/Contents/MacOS/webinspectord
+drwxr-xr-x    5 root  wheel      160  5  9 22:54 wfs
+-rwxr-xr-x    1 root  wheel    54624  4 18 16:30 wifiFirmwareLoader
+-rwxr-xr-x    1 root  wheel   398752  3 28 12:02 wifid
+-rwxr-xr-x    1 root  wheel  1021552  3 28 12:02 wifivelocityd
+-r-xr-xr-x    1 root  wheel   298528  3 28 12:02 wps
+-rwxr-xr-x    1 root  wheel    43472  3 28 12:03 x11-select
+-rwxr-xr-x    1 root  wheel    40336  4 18 16:30 xartstorageremoted
+-rwxr-xr-x    1 root  wheel    42992  3 28 12:02 xpchelper
+-rwxr-xr-x    1 root  wheel    43488  3 28 12:02 xpcproxy
+-rwxr-xr-x    1 root  wheel    41104  3 28 12:02 xpcroleaccountd
+-rwxr-xr-x    1 root  wheel    74624  3 28 12:02 xscertd
+-rwxr-xr-x    1 root  wheel   104224  3 28 12:03 xscertd-helper
+-rwxr-xr-x    1 root  wheel    23536  3 28 12:02 xssendevent
