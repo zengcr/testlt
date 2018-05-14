@@ -19,6 +19,7 @@
 -r-xr-xr-x  1 root  wheel   618448  1 19 15:37 bash
 -rwxr-xr-x  1 root  wheel   380016  3 28 12:03 csh
 -r-xr-xr-x  1 root  wheel  1287040  1 19 15:37 ksh
+-r-xr-xr-x  1 root  wheel   618512  1 19 15:37 sh
 -rwxr-xr-x  1 root  wheel   380016  3 28 12:03 tcsh
 -rwxr-xr-x  1 root  wheel   610288  1 19 15:37 zsh
 
@@ -64,6 +65,7 @@
 -rwxr-xr-x   1 root   wheel     18000  1 19 15:37 clear
 -rwxr-xr-x   1 root   wheel    185104  3 28 12:02 curl
 -rwxr-xr-x   1 root   wheel     23712  1 19 15:37 cut
+-rwxr-xr-x   1 root   wheel     73776  3 28 12:02 chsh
 -rwxr-xr-x   1 root   wheel    105600  1 19 15:37 diff
 -rwxr-xr-x   1 root   wheel     23600  1 19 15:37 du
 -rwxr-xr-x   1 root   wheel     23504  1 19 15:37 env
@@ -162,7 +164,6 @@
 -rwxr-xr-x  1 root  wheel    19024  1 19 15:37 link
 -rwxr-xr-x  1 root  wheel    19024  1 19 15:37 ln
 -rwxr-xr-x  1 root  wheel   111264  1 19 15:37 pax
--r-xr-xr-x  1 root  wheel   618512  1 19 15:37 sh
 -rwxr-xr-x  1 root  wheel    18080  1 19 15:37 sleep
 -rwxr-xr-x  1 root  wheel    32208  1 19 15:37 stty
 -rwxr-xr-x  1 root  wheel    42400  3 28 12:03 sync
@@ -384,7 +385,6 @@ lrwxr-xr-x   1 root   wheel         5  1 19 19:17 cc -> clang
 -rwxr-xr-x   1 root   wheel     26912  1 19 15:37 checknr
 -rwxr-xr-x   1 root   wheel     18736  1 19 15:37 chflags
 -rwxr-xr-x   1 root   wheel     73776  3 28 12:02 chfn
--rwxr-xr-x   1 root   wheel     73776  3 28 12:02 chsh
 -rwxr-xr-x   1 root   wheel     22688  3 28 12:02 cksum
 -rwxr-xr-x   1 root   wheel     18288  3 28 12:02 clang
 -rwxr-xr-x   1 root   wheel     18304  3 28 12:02 clang++
