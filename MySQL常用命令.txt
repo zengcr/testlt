@@ -269,3 +269,7 @@ revoke all on *.* from dba@localhost;
 2. 如果想让授权的用户，也可以将这些权限 grant 给其他用户，需要选项 “grant option“ 
 grant select on testdb.* to dba@localhost with grant option; 
 这个特性一般用不到。实际中，数据库权限最好由 DBA 来统一管理。
+
+
+常见问题：
+1、安装 mysql 8.0后；root用户在客户端连接不上：http://binary-space.iteye.com/blog/2412769
