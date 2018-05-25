@@ -58,3 +58,5 @@
 ## 官方提供的shell脚本安装方法
 
         curl -fsSL https://get.docker.com/ | sh
+		或者使用阿里云镜像地址：
+		curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
