@@ -18,3 +18,11 @@
 	基于公共密钥的安全验证方式（public key authentication method），通过生成一组密钥（public key/private key）来实现用户的登录验证。
 
 	基于键盘交互的验证方式（keyboard interactive authentication method），通过服务器向客户端发送提示信息，然后由客户端根据相应的信息通过手工输入的方式发还给服务器端。
+
+## 服务器启用ssh服务
+[https://jingyan.baidu.com/article/fea4511adf298df7bb912522.html](https://jingyan.baidu.com/article/fea4511adf298df7bb912522.html "ubuntu如何启用ssh服务")
+- apt update
+- apt upgrade
+- apt install openssh-server
+- 编译允许root远程登陆 vi /etc/ssh/sshd_config 
+- 重启服务service ssh restart
