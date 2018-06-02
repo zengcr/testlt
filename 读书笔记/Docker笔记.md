@@ -182,3 +182,17 @@
         3. search -f stars=3
         4. commit -m -a
         5. rm/rmi -f
+
+
+## 常用操作
+- 配置国内官方镜像仓库[https://blog.csdn.net/zzy1078689276/article/details/77371782](https://blog.csdn.net/zzy1078689276/article/details/77371782 "Docker中配置国内镜像")
+
+		# Linux环境
+		1、使用vi修改 /etc/docker/daemon.json 文件并添加上”registry-mirrors”: [“https://registry.docker-cn.com“]
+			vi /etc/docker/daemon.json 
+			{ 
+			“registry-mirrors”: [“https://registry.docker-cn.com“] 
+			}
+		2、重启Docker
+			systemctl daemon-reload 
+			systemctl restart docker
