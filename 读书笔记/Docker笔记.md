@@ -54,7 +54,7 @@
     - 基于本地模版导入
     - 基于Dockerfile创建
 
-            1. docker commit -m 'some message' -a 'author information' CONTAINER_ID CONTAIN_Name:xxx
+            1. docker commit -m 'some message' -a 'author information' CONTAINER_ID [REPOSITORY[:TAG]]
             2. docker import xxx
 
 - 存出和载入镜像
