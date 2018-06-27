@@ -312,3 +312,21 @@ mysql> flush privileges;
 7. 刷新权限（必须步骤）：flush privileges;　。 
 8. 退出 quit。 
 9. 注销系统，再进入，使用用户名root和刚才设置的新密码123登录。
+
+
+
+## 关于MySQL索引的问题：
+https://www.cnblogs.com/zz-tt/p/6609828.html
+https://blog.csdn.net/u012099869/article/details/52701220
+
+mysql语句添加索引
+1.PRIMARY  KEY（主键索引）
+	mysql>ALTER  TABLE  `table_name`  ADD  PRIMARY  KEY (  `column`  ) 
+2.UNIQUE(唯一索引)
+	mysql>ALTER  TABLE  `table_name`  ADD  UNIQUE (`column` ) 
+3.INDEX(普通索引)
+	mysql>ALTER  TABLE  `table_name`  ADD  INDEX index_name (  `column`  )
+4.FULLTEXT(全文索引)
+	mysql>ALTER  TABLE  `table_name`  ADD  FULLTEXT ( `column` )
+5.多列索引
+	mysql>ALTER  TABLE  `table_name`  ADD  INDEX index_name (  `column1`,  `column2`,  `column3`  )
