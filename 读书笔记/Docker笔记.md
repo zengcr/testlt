@@ -182,7 +182,7 @@
 			1. FROM <image>:<tag>
 
 		# 维护者信息		# Author
-			2. MAINTAINET <name>
+			2. MAINTAINER <name>
 
 		# 镜像操作指令
 			3. RUN <commands> 或 RUN ["", "", ""]	# 每条指令将在当前镜像基础上执行，并提交为新的镜像。（可以用“\”换行）

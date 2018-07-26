@@ -23,6 +23,8 @@
 		coverage
 		passlib
 
+		pip install flask_script flask_bootstrap flask_moment flask_wtf flask_sqlalchemy flask_migrate flask_email flask_login flask_pagedown
+
 - 常用概念：
    - 程序上下文
    - 请求上下文
