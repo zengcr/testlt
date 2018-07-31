@@ -6,7 +6,7 @@
         Flask-WTF
         Flask-SQLAlchemy
         Flask-Migrate
-        Flask-Email
+        Flask-mail
         Flask-Login
 		Flask-Pagedown
 		markdown
@@ -22,8 +22,9 @@
 		flipflop
 		coverage
 		passlib
+		Flask-Email
 
-		pip install flask_script flask_bootstrap flask_moment flask_wtf flask_sqlalchemy flask_migrate flask_email flask_login flask_pagedown
+		pip install flask_script flask_bootstrap flask_moment flask_wtf flask_sqlalchemy flask_migrate flask_mail flask_login flask_pagedown
 
 - 常用概念：
    - 程序上下文
