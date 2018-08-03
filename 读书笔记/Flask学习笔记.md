@@ -23,6 +23,7 @@
 		coverage
 		passlib
 		Flask-Email
+		Flask-Testing
 
 		pip install flask_script flask_bootstrap flask_moment flask_wtf flask_sqlalchemy flask_migrate flask_mail flask_login flask_pagedown
 
