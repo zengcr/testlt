@@ -157,3 +157,4 @@ Shift–Command–
 加号 (+)	放大所选项。Command–等号 (=) 可执行相同的功能。
 Shift–Command–
 问号 (?)	打开“帮助”菜单。
+
