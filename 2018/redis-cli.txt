@@ -1,3 +1,4 @@
+学习参考：https://blog.csdn.net/hjm4702192/article/details/80518856
 连接到远程服务器：
 $ redis-cli -h host -p port -a password
 
