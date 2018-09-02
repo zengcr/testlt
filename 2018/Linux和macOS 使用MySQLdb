@@ -1,0 +1,38 @@
+# 在Linux及macOS上安装
+## Linux
+- sudo apt-get install libmysqlclient-dev
+- pip install MySQL-python
+
+## macOS
+- 个人在实际使用过程中安装的方法如下：
+    - brew unlink mysql-connector-c
+    - brew install mysql
+    - pip3 install MySQL-python
+
+- 以下方法供安装出错时参考：
+1）xcode-select --install
+2）brew install mysql
+3）brew unlink mysql-connector-c
+4）brew install mysql
+5）pip3 install MySQL-python
+
+## 在 macOS 安装MySQL的情况总结：
+- 在 MySQL 官网下载对应的 macOS 版本程序安装包，根据图形化界面提示安装。安装完成后要将 /usr/local/mysql/bin 目录加入PATH环境变量。 在 .bash_profile 文件中增加如下命令
+    `export PATH=${PATH}:/usr/local/mysql/bin`。这种情况安装的 MySQL 目录在文件夹 /usr/local/mysql/
+    ➜  /usr/local $ ll
+        total 0
+        drwxrwxr-x   38 litian  admin   1.2K  8 24 23:53 Cellar
+        lrwxr-xr-x    1 root    wheel    30B  5 15 16:52 mysql -> mysql-8.0.11-macos10.13-x86_64
+        drwxr-xr-x   13 root    wheel   416B  5 15 17:09 mysql-8.0.11-macos10.13-x86_64
+
+- 通过 brew install mysql 方式安装
+    - 第一次安装版本可能会是旧版本，例如 mysql-5.7.22.high_sierra.bottle.tar.gz 版本
+    - 通过 brew update; brew upgrade 后，会更新 mysql 至最新的版本  mysql--8.0.12.high_sierra.bottle.tar.gz。此时会在 /usr/local/Cellar/mysql 目录下存在两个版本的 mysql
+        ➜  /usr/local/Cellar/mysql $ ll
+            total 0
+            drwxr-xr-x  15 litian  admin   480B  8 24 00:00 5.7.22
+            drwxr-xr-x  15 litian  staff   480B  8 24 00:45 8.0.12
+        与此同时，会建立最新版本至 /usr/local/bin/ 目录下的软链接
+        /usr/local/bin $ ll | grep -i mysql
+        lrwxr-xr-x  1 litian  admin    32B  8 24 00:45 mysql -> ../Cellar/mysql/8.0.12/bin/mysql
+        lrwxr-xr-x  1 litian  admin    39B  8 24 00:45 mysql.server -> ../Cellar/mysql/8.0.12/bin/mysql.server
