@@ -1,18 +1,18 @@
 # 熟悉的
-?         (\?) Synonym for `help'.
-help      (\h) Display this help.
-exit      (\q) Exit mysql. Same as quit.	--退出mysql
-quit      (\q) Quit mysql.
+use       (\u) Use another database. Takes database name as argument.	--切换数据库
 
 delimiter (\d) Set statement delimiter.		--设置命令终止符，缺省为；
 prompt    (\R) Change your mysql prompt.	--改变mysql的提示符
 status    (\s) Get status information from the server.		--获得状态信息
-
-use       (\u) Use another database. Takes database name as argument.	--切换数据库
+print     (\p) Print current command.
 
 notee     (\t) Don't write into outfile.			--关闭输出到文件
 tee       (\T) Set outfile [to_outfile]. Append everything into given outfile.	--操作结果输出到文件
 
+?         (\?) Synonym for `help'.
+help      (\h) Display this help.
+exit      (\q) Exit mysql. Same as quit.	--退出mysql
+quit      (\q) Quit mysql.
 # 不熟悉的
 List of all MySQL commands:
 Note that all text commands must be first on line and end with ';'
@@ -20,7 +20,6 @@ clear     (\c) Clear the current input statement.	--清除当前输入的语句
 connect   (\r) Reconnect to the server. Optional arguments are db and host. 	--重新连接，通常用于被剔除或异常断开后重新连接
 ego       (\G) Send command to mysql server, display result vertically.		--控制结果显示为垂直显示
 go        (\g) Send command to mysql server.		--发送命令到mysql服务 
-print     (\p) Print current command.
 rehash    (\#) Rebuild completion hash.
 source    (\.) Execute an SQL script file. Takes a file name as an argument.	--执行脚本文件
 charset   (\C) Switch to another charset. Might be needed for processing binlog with multi-byte charsets.	--设置字符集 
@@ -123,47 +122,55 @@ Description:
 SHOW has many forms that provide information about databases, tables,
 columns, or status information about the server. This section describes
 those following:
-
-SHOW {BINARY | MASTER} LOGS
-SHOW BINLOG EVENTS [IN 'log_name'] [FROM pos] [LIMIT [offset,] row_count]
-SHOW CHARACTER SET [like_or_where]
-SHOW COLLATION [like_or_where]
-SHOW [FULL] COLUMNS FROM tbl_name [FROM db_name] [like_or_where]
-SHOW CREATE DATABASE db_name
-SHOW CREATE EVENT event_name
-SHOW CREATE FUNCTION func_name
-SHOW CREATE PROCEDURE proc_name
-SHOW CREATE TABLE tbl_name
-SHOW CREATE TRIGGER trigger_name
-SHOW CREATE VIEW view_name
 SHOW DATABASES [like_or_where]
-SHOW ENGINE engine_name {STATUS | MUTEX}
-SHOW [STORAGE] ENGINES
-SHOW ERRORS [LIMIT [offset,] row_count]
-SHOW EVENTS
-SHOW FUNCTION CODE func_name
-SHOW FUNCTION STATUS [like_or_where]
-SHOW GRANTS FOR user
+SHOW [FULL] TABLES [FROM db_name] [like_or_where]
+SHOW [FULL] COLUMNS FROM tbl_name [FROM db_name] [like_or_where]
 SHOW INDEX FROM tbl_name [FROM db_name]
-SHOW MASTER STATUS
-SHOW OPEN TABLES [FROM db_name] [like_or_where]
-SHOW PLUGINS
-SHOW PROCEDURE CODE proc_name
-SHOW PROCEDURE STATUS [like_or_where]
+SHOW CHARACTER SET [like_or_where]						# 显示字符编码设置
+SHOW [STORAGE] ENGINES
+SHOW GRANTS FOR user
 SHOW PRIVILEGES
-SHOW [FULL] PROCESSLIST
-SHOW PROFILE [types] [FOR QUERY n] [OFFSET n] [LIMIT n]
-SHOW PROFILES
-SHOW RELAYLOG EVENTS [IN 'log_name'] [FROM pos] [LIMIT [offset,] row_count]
-SHOW SLAVE HOSTS
-SHOW SLAVE STATUS [FOR CHANNEL channel]
+SHOW [GLOBAL | SESSION] VARIABLES [like_or_where]
+
+
+SHOW CREATE DATABASE db_name
+SHOW CREATE TABLE tbl_name
+SHOW CREATE VIEW view_name
+SHOW CREATE TRIGGER trigger_name
+SHOW CREATE PROCEDURE proc_name
+SHOW CREATE FUNCTION func_name
+SHOW CREATE EVENT event_name
+
+
 SHOW [GLOBAL | SESSION] STATUS [like_or_where]
 SHOW TABLE STATUS [FROM db_name] [like_or_where]
-SHOW [FULL] TABLES [FROM db_name] [like_or_where]
-SHOW TRIGGERS [FROM db_name] [like_or_where]
-SHOW [GLOBAL | SESSION] VARIABLES [like_or_where]
-SHOW WARNINGS [LIMIT [offset,] row_count]
+SHOW FUNCTION STATUS [like_or_where]
+SHOW PROCEDURE STATUS [like_or_where]
+SHOW ENGINE engine_name {STATUS | MUTEX}
 
+SHOW TRIGGERS [FROM db_name] [like_or_where]
+SHOW [FULL] PROCESSLIST
+SHOW EVENTS
+SHOW FUNCTION CODE func_name
+SHOW PROCEDURE CODE proc_name
+
+SHOW MASTER STATUS
+SHOW SLAVE HOSTS
+SHOW SLAVE STATUS [FOR CHANNEL channel]
+
+
+SHOW {BINARY | MASTER} LOGS
+SHOW PLUGINS
+SHOW PROFILE [types] [FOR QUERY n] [OFFSET n] [LIMIT n]
+SHOW PROFILES
+SHOW COLLATION [like_or_where]
+
+
+SHOW OPEN TABLES [FROM db_name] [like_or_where]
+SHOW ERRORS [LIMIT [offset,] row_count]
+SHOW WARNINGS [LIMIT [offset,] row_count]
+SHOW BINLOG EVENTS [IN 'log_name'] [FROM pos] [LIMIT [offset,] row_count]
+SHOW RELAYLOG EVENTS [IN 'log_name'] [FROM pos] [LIMIT [offset,] row_count]
 like_or_where:
     LIKE 'pattern'
   | WHERE expr
