@@ -1,13 +1,17 @@
 -r--r--r--   1 root  wheel     189  7 16  2017 profile
 -rw-r--r--   1 root  wheel      45 10  3  2017 paths
 -r--r--r--   1 root  wheel     265  7 16  2017 bashrc
+-r--r--r--   1 root  wheel     207  7 16  2017 zshrc
+-rw-r--r--   1 root  wheel     179 10  3  2017 shells
 
 -rw-r--r--   1 root  wheel     213 10  3  2017 hosts
--rw-r--r--   1 root  wheel    2769 10  3  2017 group
--rw-r--r--   1 root  wheel    6774 10  3  2017 passwd
 -rw-r--r--   1 root  wheel      53 10  3  2017 networks
 -rw-r--r--   1 root  wheel  677972 10  3  2017 services
 -r--r-----   1 root  wheel    1563  7 16  2017 sudoers
+
+-rw-r--r--   1 root  wheel    2769 10  3  2017 group
+-rw-r--r--   1 root  wheel    6774 10  3  2017 passwd
+-rw-------   1 root  wheel    7264 10  3  2017 master.passwd
 
 -rw-r--r--   1 root  wheel       0 10  3  2017 hosts.equiv
 drwxr-xr-x   2 root  wheel      64 10  3  2017 paths.d
@@ -45,7 +49,6 @@ drwxr-xr-x   4 root  wheel     128  7 16  2017 emond.d
 lrwxr-xr-x   1 root  wheel      39  5  9 22:58 localtime -> /var/db/timezone/zoneinfo/Asia/Shanghai
 -rw-r--r--   1 root  wheel     621  7 16  2017 locate.rc
 -rw-r--r--   1 root  wheel     106  7 29  2017 mail.rc
--rw-------   1 root  wheel    7264 10  3  2017 master.passwd
 -rw-r--r--   1 root  wheel      11  7 16  2017 nanorc
 -rw-r--r--   1 root  wheel    1318  7 16  2017 newsyslog.conf
 drwxr-xr-x   7 root  wheel     224  1 19 15:35 newsyslog.d
@@ -68,7 +71,6 @@ lrwxr-xr-x   1 root  wheel      22  1 19 19:17 resolv.conf -> ../var/run/resolv.
 -rw-r--r--   1 root  wheel    1735 10  3  2017 rpc
 -rw-r--r--   1 root  wheel     891 12 18 01:26 rtadvd.conf
 drwxr-xr-x   7 root  wheel     224  7 16  2017 security
--rw-r--r--   1 root  wheel     179 10  3  2017 shells
 drwxr-xr-x   4 root  wheel     128  7 16  2017 snmp
 drwxr-xr-x   5 root  wheel     160  1 19 15:33 ssh
 drwxr-xr-x   6 root  wheel     192  7 16  2017 ssl
@@ -78,7 +80,6 @@ drwxr-xr-x   6 root  wheel     192  7 16  2017 ssl
 drwxr-xr-x   5 root  wheel     160  7 16  2017 wfs
 -rw-r--r--   1 root  wheel       0 10  3  2017 xtab
 -r--r--r--   1 root  wheel     126  7 16  2017 zprofile
--r--r--r--   1 root  wheel     207  7 16  2017 zshrc
 
 
 drwxr-xr-x   2 root  wheel      64 11  1  2017 mach_init.d
